@@ -12,27 +12,16 @@
                 <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
                 <a class="p-6 block box-border hover:border border-yellow-400" href="/">首頁</a>
                 <a class="p-6 block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
-            @if (Route::has('login'))
-            <div class="flex ml-auto">
-                <form class="mr-3" action="{{ route('product.find') }}" method="get">
-                    <select class="border-0" name="type" id="">
-                        <option value="product_name">商品名稱</option>
-                        <option value="product_dm_number">目錄編號</option>
-                    </select>
-                    <input name="keyword" class="border-0" type="text" placeholder="請輸入搜尋項目">
-                    <button type="submit">搜尋</button>
-                </form>
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="leading-10 text-gray-700">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="leading-10 text-gray-700">登入</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 leading-10 text-gray-700">註冊</a>
-                    @endif
-                @endauth
-            </div>
-            @endif
+                <div class="hidden md:block flex ml-auto">
+                    <form class="mr-3" action="{{ route('product.find') }}" method="get">
+                        <select class="border-0" name="type" id="">
+                            <option value="product_name">商品名稱</option>
+                            <option value="product_dm_number">目錄編號</option>
+                        </select>
+                        <input name="keyword" class="border-0" type="text" placeholder="請輸入搜尋項目">
+                        <button type="submit">搜尋</button>
+                    </form>
+                </div>
             </div>
         </nav>
 
@@ -111,6 +100,15 @@
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>
                 <a class="block px-4" href="">聯繫我們</a>
                 <a class="block px-4" href="">店面位置</a>
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
+                @else
+                    <a href="{{ route('login') }}" class="block px-4">管理員登入</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-gray-700">註冊</a>
+                    @endif
+                @endauth
             </div>
            <p class="pt-4">Copyright© 2021 文光行</p>
 

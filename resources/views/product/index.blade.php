@@ -4,25 +4,20 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-12">
-                <div class="md:col-span-2">
-                    <h3 class="text-3xl">商品分類</h3>
+        <div class="container mx-auto">
+            <div class="grid grid-cols-12 gap-5">
+                <div class="hidden md:block md:col-span-2">
                     <ul>
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
-                        <li class="py-2"><a href="">商品分頁</a></li><hr />
+                        <li class="py-2"><a href="">商品分頁</a></li>
                     </ul>
                 </div>
-                <div class="col-span-10">
-                    <h3 class="text-3xl">商品列表</h3>
-                    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 p-2">
+                <div class="col-span-12">
+                    <p class="text-3xl font-extrabold mb-3">商品列表</p>
+                    <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
+                    <ul class="p-2 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                         @foreach ($products as $product)
-                            <div class="flex flex-col p-2 h-96 box-border shadow rounded hover:shadow-md">
-                                <div class="h-4/6">
+                            <li class="flex flex-col p-5 box-border shadow rounded hover:shadow-md">
+                                <div class="">
                                     <a href="{{ route('product.show',['product'=> $product->id]) }}">
                                         <img class="h-full w-full" src="{{ $product->product_imgsrc }}" alt="">
                                     </a>
@@ -32,11 +27,13 @@
                                         <a href="{{ route('product.show',['product'=> $product->id]) }}">{{ $product->product_name }}</a>
                                     </p>
                                     <p class="py-3 text-yellow-600">NT$ <span class="text-lg font-bold"> {{ $product->product_price }} </span></p>
-                                    <a href="{{ route('product.show',['product'=> $product->id]) }}">詳細頁面</a>
+                                    <a class="block text-center transition duration-500 ease-in-out border-2 border-yellow-500 text-red-300 hover:border-yellow-500 hover:text-white hover:bg-yellow-500" href="{{ route('product.show',['product'=> $product->id]) }}">詳細頁面</a>
                                 </div>
-                            </div>
+                            </li>
                         @endforeach
-                    </div>
+                    </ul>
+                    <!-- 分頁頁碼 -->
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>

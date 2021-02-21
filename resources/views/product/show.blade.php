@@ -3,7 +3,7 @@
     {{ $product -> product_name }}
     </x-slot>
     <div class="py-8">
-        <div class="max-w-7xl mx-auto">
+        <div class="container mx-auto">
             <h2 class="text-3xl pb-8">{{ $product -> product_name }}</h2>
             <div class="flex">
                 <div class="w-1/2">
