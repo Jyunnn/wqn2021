@@ -17,13 +17,13 @@
 
                     <div class="py-3">
                         <div>
-                            <h3 class="text-xl"> 商品屬性：</h3>
-
-                            {{ $product -> product_attr }}
-                            <input type="radio" name="type" id="">
-                            <label for="">紅色</label>
-                            <input type="radio" name="type" id="">
-                            <label for="">藍色</label>
+                            @if($product -> product_attr)
+                                <h3 class="text-xl"> 商品屬性：</h3>
+                                @foreach(json_decode($product -> product_attr, true) as $attr)
+                                    <input type="radio" name="{{ $attr }}" id="">
+                                    <label for="">{{ $attr }}</label>
+                                @endforeach
+                            @endif
                         </div>
                         <br>
                         <div>
@@ -37,7 +37,7 @@
             </div>
             <hr class="py-5">
             <div>
-                {{ strip_tags($product -> product_content) }}
+                {!! htmlspecialchars_decode($product -> product_content) !!}
             </div>
         </div>   
     </div>
