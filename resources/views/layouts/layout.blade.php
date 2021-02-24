@@ -47,7 +47,7 @@
                     @endif
                 @endauth
             </div>
-           <p class="pt-4">Copyright© 2021 文光行</p>
+           <p class="pt-4">Copyright©️2021 文光行</p>
     </footer>
 
 </body>

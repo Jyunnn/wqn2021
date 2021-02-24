@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Product;
+
 use Illuminate\Support\Facades\Storage;
 
 // 新建立的規則
@@ -49,6 +51,35 @@ class ProductController extends Controller
         //     // 在 app/Rules/FormCheck設定
         // ]);
 
+        $file1 = $request->file('product_imgsrc1');
+        $file2 = $request->file('product_imgsrc2');
+        $file3 = $request->file('product_imgsrc3');
+
+        $path1 = $file1->store('public');
+        $url1 = Storage::url($path1);
+
+        $product = new Product;
+        $product->product_type = $request->product_type;
+        $product->product_dm_number = $request->product_dm_number;
+        $product->product_name = $request->product_name;
+        $product->product_imgsrc1 = $url1;
+        $product->product_attr = $request->product_attr;
+        $product->product_price = $request->product_price;
+        $product->product_qty = $request->product_qty;
+        $product->product_content = $request->product_content;
+        $product->product_show = 1;
+        $product->save();
+
+        if($file2 && $file3) {
+            $path2 = $file2->store('public');
+            $path3 = $file3->store('public');
+            $url2 = Storage::url($path2);
+            $url3 = Storage::url($path3);
+            $product->product_imgsrc2 = $url2;
+            $product->product_imgsrc3 = $url3;
+        }
+
+
         $validator = Validator::make($request->all(), [
             // 直接使用
             'product_name' => [
@@ -71,18 +102,8 @@ class ProductController extends Controller
         //                 ->withInput();
         // }
 
-
-
-        // 上傳照片
-        // 獲取原始檔案名稱
-        $name = $request->file('product_imgsrc')->getClientOriginalName();
-
-        $path = $request->file('product_imgsrc')->storeAs(
-            'local', $name , 'public'
-        );
-
         dump(Storage::disk('public'));
-        // return redirect()->route('product.index')->withErrors(Storage::disk('public')->url($path));
+        return redirect()->route('product.index')->withErrors(Storage::disk('public')->url($path1));
     }
 
     /**
@@ -136,11 +157,18 @@ class ProductController extends Controller
         //
     }
 
+    public function type(Request $request)
+    {
+        $keyword = $request->query()["keyword"];
+        $products = DB::table('products')->where( 'product_type','LIKE', $keyword)->paginate(10);
+        return view('product.type', ['products' => $products, 'keyword' => $keyword]);
+    }
+
     public function find(Request $request)
     {
         $type = $request->query()["type"];
         $keyword = $request->query()["keyword"];
         $products = DB::table('products')->where( $type ,'LIKE','%'.$keyword.'%')->get();
-        return view('product.find', ['products' => $products]);
+        return view('product.find', ['products' => $products , 'type' => $type , 'keyword' => $keyword]);
     }
 }

@@ -8,12 +8,12 @@
             <x-menu />
             <div class="grid grid-cols-12 gap-5">
                 <div class="col-span-12">
-                    <p class="text-3xl font-extrabold mb-3">商品列表 - 所有商品</p>
+                    <p class="text-3xl font-extrabold mb-3">商品列表 - {{$keyword}}</p>
                     <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
-                    <ul class="p-2 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
+                    <ul class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                         @foreach ($products as $product)
-                            <li class="flex flex-col justify-between p-5 box-border shadow rounded hover:shadow-md">
-                                <div>
+                            <li class="flex flex-col p-5 box-border rounded hover:shadow-md">
+                                <div class="">
                                     <a href="{{ route('product.show',['product'=> $product->id]) }}">
                                         <img class="h-full w-full" src="{{ $product->product_imgsrc1 }}" alt="">
                                     </a>
@@ -35,13 +35,3 @@
         </div>
     </div>
 </x-layout>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif

@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::resource('product', ProductController::class);
 
 Route::get('/find',[ProductController::class, 'find'])->name('product.find');
+Route::get('/type',[ProductController::class, 'type'])->name('product.type');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
