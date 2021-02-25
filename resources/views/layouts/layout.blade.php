@@ -39,6 +39,7 @@
                 <a class="block px-4" href="">店面位置</a>
                 @auth
                     <a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
+                    <a href="{{ route('product.create') }}" class="block px-4">建立商品</a>
                 @else
                     <a href="{{ route('login') }}" class="block px-4">管理員登入</a>
 

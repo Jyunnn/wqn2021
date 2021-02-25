@@ -131,7 +131,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = DB::table('products')->where('id', $id)->first();
+        if(is_null($product)){
+            abort(404);
+        };
+        dump($product);
+
+        return view('product.edit', ['product' => $product]);
     }
 
     /**
@@ -154,7 +160,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = DB::table('products')->where('id', $id)->first();
+
+        if(is_null($product)){
+            return redirect()->route('product.index');
+        };
+
+        DB::table('products')->where('id', $id)->delete();
+
+        return redirect()->route('product.index');
     }
 
     public function type(Request $request)
