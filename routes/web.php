@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,15 +22,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('product', ProductController::class);
-
 Route::get('/find',[ProductController::class, 'find'])->name('product.find');
 Route::get('/type',[ProductController::class, 'type'])->name('product.type');
+Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('auth')->name('dashboard.list');
 
+Route::resource('product', ProductController::class);
+Route::resource('dashboard', DashboardController::class)->middleware('auth');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/product/create', function () {
     return view('product.create');
