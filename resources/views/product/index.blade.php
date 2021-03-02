@@ -15,7 +15,7 @@
                             <li class="flex flex-col justify-between p-5 box-border shadow rounded hover:shadow-md">
                                 <div>
                                     <a href="{{ route('product.show',['product'=> $product->id]) }}">
-                                        <img class="h-full w-full" src="{{ $product->product_imgsrc1 }}" alt="">
+                                        <img class="h-full w-full" src="{{ asset($product->product_imgsrc1) }}" alt="">
                                     </a>
                                 </div>
                                 <div>

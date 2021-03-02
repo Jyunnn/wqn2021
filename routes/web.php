@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/find',[ProductController::class, 'find'])->name('product.find');
 Route::get('/type',[ProductController::class, 'type'])->name('product.type');
 Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('auth')->name('dashboard.list');
+Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('auth')->name('dashboard.find');
 
 Route::resource('product', ProductController::class);
 Route::resource('dashboard', DashboardController::class)->middleware('auth');

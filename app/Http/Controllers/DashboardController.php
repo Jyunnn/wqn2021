@@ -87,7 +87,13 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = DB::table('products')->where('id', $id)->first();
+        if(is_null($product)){
+            abort(404);
+        };
+        dump($product);
+
+        return view('dashboard.edit', ['product' => $product]);
     }
 
     /**
@@ -99,7 +105,23 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('products')->where('id', $id)
+        ->update(
+            [
+                'product_type' => $request -> product_type,
+                'product_dm_number' => $request->product_dm_number,
+                'product_name' => $request->product_name,
+                // 'product_imgsrc1' => $request->product_imgsrc1,
+                // 'product_imgsrc2' => $request->product_imgsrc2,
+                // 'product_imgsrc3' => $request->product_imgsrc3,
+                'product_attr' => $request->product_attr,
+                'product_price' => $request -> product_price,
+                'product_qty' => $request->product_qty,
+                'product_content' => $request->product_content
+            ],
+        );
+
+    return redirect()->route('dashboard.list');
     }
 
     /**
@@ -117,5 +139,12 @@ class DashboardController extends Controller
     {
         $products = DB::table('products')->paginate(1);
         return view('dashboard.list', ['products' => $products]);
+    }
+
+    public function find(Request $request)
+    {
+        $keyword = $request->query()["keyword"];
+        $products = DB::table('products')->where('product_name','LIKE','%'.$keyword.'%')->paginate(20);
+        return view('dashboard.find', ['products' => $products]);
     }
 }
