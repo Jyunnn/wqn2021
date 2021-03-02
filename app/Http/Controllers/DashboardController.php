@@ -91,8 +91,6 @@ class DashboardController extends Controller
         if(is_null($product)){
             abort(404);
         };
-        dump($product);
-
         return view('dashboard.edit', ['product' => $product]);
     }
 
@@ -132,12 +130,12 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('products')->where('id', '=', $id)->delete();
     }
 
     public function list()
     {
-        $products = DB::table('products')->paginate(1);
+        $products = DB::table('products')->paginate(20);
         return view('dashboard.list', ['products' => $products]);
     }
 

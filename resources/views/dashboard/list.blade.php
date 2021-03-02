@@ -31,15 +31,15 @@
                     <tbody class="">
                         @foreach($products as $product)
                         <tr class="border-b">
-                            <td class="py-5"> <a href="{{ route('product.show',['product' => $product-> id])}}">👁️</a> </td>
+                            <td class="py-5"> <a href="{{ route('product.show',['product' => $product-> id])}}" target=_blank>👁️</a> </td>
                             <td> {{ $product->product_type }} </td>
                             <td> {{ $product->product_dm_number }} </td>
                             <td> {{ $product->product_name }} </td>
                             <td> {{ $product->product_price }} </td>
                             <td> {{ $product->product_qty }} </td>
                             <td> {{ $product->product_show }}  </td>
-                            <td>✍️</td>
-                            <td>❌</td>
+                            <td><a href="{{ route('dashboard.edit', ['dashboard' => $product-> id]) }}">✍️</a></td>
+                            <td><a onclick="return confirm('確定要刪除嗎?刪除後不能再還原')" href="{{ route('dashboard.destroy', ['dashboard' => $product-> id]) }}">❌</a></td>
                         </tr>
                         @endforeach
                     </tbody>

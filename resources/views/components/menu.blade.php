@@ -3,7 +3,7 @@
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=書寫筆')}}">🖊️#書寫筆</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=修正文具')}}">📝#修正文具</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=印章墨水')}}">🖃#印章墨水</a></li>
-        <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=桌上文具')}}">#桌上文具</a></li>
+        <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=桌上五金')}}">#桌上五金</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=包裝黏著')}}">📦#包裝黏著</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=裝訂事務')}}">📎#裝訂事務</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=度量衡')}}">📏#度量衡</a></li>

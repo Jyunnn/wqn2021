@@ -3,78 +3,76 @@
     {{ $product -> product_name }}
     </x-slot>
     <div class="py-8">
-    <div class="container mx-auto">
-        <x-menu />
-        <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
-    </div>
-    <div class="container mx-auto">
-        <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
-            <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
-                <div class="w-450 h-450">
-                    <img class="mySlides" src="{{ asset($product -> product_imgsrc1) }}" style="">
-                    <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
-                    <img class="mySlides" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;display:none">
-                </div>
-                <div>
-                    <div class="flex flex-row md:flex-col">
-                        <div class="w-150 h-150">
-                            <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc1) }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
-                        </div>
-                        <div class="w-150 h-150">
-                            <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc2) }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
-                        </div>
-                        <div class="w-150 h-150">
-                            <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+
+        <div class="container mx-auto">
+            <x-menu />
+            <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
+        </div>
+
+        <div class="container mx-auto">
+            <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
+                    <div class="w-450 h-450">
+                        <img class="mySlides" src="{{ asset($product -> product_imgsrc1) }}" style="">
+                        <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
+                        <img class="mySlides" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;display:none">
+                    </div>
+                    <div>
+                        <div class="flex flex-row md:flex-col">
+                            <div class="w-150 h-150">
+                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc1) }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+                            </div>
+                            <div class="w-150 h-150">
+                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc2) }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+                            </div>
+                            <div class="w-150 h-150">
+                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <h2 class="text-3xl pb-8">{{ $product -> product_name }}</h2>
-                    <h3> 商品分類 > <a href=""> {{ $product -> product_type}} </a> </h3>
-                    <h3> 目錄編號： {{ $product -> product_dm_number}} </h3>
-                </div>
-
-                <div class="py-3">
                     <div>
-                        @if($product -> product_attr)
-                            <h3 class="text-xl"> 商品屬性：</h3>
-                            @foreach(json_decode($product -> product_attr, true) as $attr)
-                                <input type="radio" name="{{ $attr }}" id="">
-                                <label for="">{{ $attr }}</label>
-                            @endforeach
+                        <h2 class="text-3xl pb-8">{{ $product -> product_name }}</h2>
+                        <h3> 商品分類 > {{ $product -> product_type}} </h3>
+                        <h3> 目錄編號： {{ $product -> product_dm_number}} </h3>
+                    </div>
+
+                    <div class="py-3">
+                        <div>
+                            @if($product -> product_attr)
+                                <h3 class="text-xl"> 商品屬性：</h3>
+                                @foreach(json_decode($product -> product_attr, true) as $attr)
+                                    <input type="radio" name="{{ $attr }}" id="">
+                                    <label for="">{{ $attr }}</label>
+                                @endforeach
+                            @endif
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">數量</label>
+                            <input id="product_cart_input" name="product_cart_input" type="number" value="1" min="1">
+                        </div>
+                        @if( $product -> product_price == 0 )
+                            <h3 class="text-xl py-3">定價: 來電詢價 </h3>
+                        @else
+                            <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
                         @endif
+                        <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                     </div>
-                    <br>
-                    <div>
-                        <label for="">數量</label>
-                        <input id="product_cart_input" name="product_cart_input" type="number" value="1" min="1">
-                    </div>
-                    @if( $product -> product_price == 0 )
-                        <h3 class="text-xl py-3">定價: 來電詢價 </h3>
-                    @else
-                        <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
-                    @endif
-                    <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                 </div>
             </div>
-        </div>
-        <hr class="py-5">
-        <div>
-            <div class="bg-gray-100 p-3">
-                <h2 class="text-3xl">商品說明</h2>
+            <hr class="py-5">
+            <div>
+                <div class="bg-gray-100 p-3">
+                    <h2 class="text-3xl">商品說明</h2>
+                </div>
+                <div class="p-3">
+                {!! htmlspecialchars_decode($product -> product_content) !!}
+                </div>
             </div>
-            <div class="p-3">
-            {!! htmlspecialchars_decode($product -> product_content) !!}
-            </div>
-        </div>
-
-
-
-
-
-    </div>   
+        </div>   
+        
     </div>
     
     <script>
