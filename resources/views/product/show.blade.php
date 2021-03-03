@@ -49,14 +49,13 @@
                             @endif
                         </div>
                         <br>
-                        <div>
-                            <label for="">數量</label>
-                            <input id="product_cart_input" name="product_cart_input" type="number" value="1" min="1">
-                        </div>
+                        <!-- <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div> -->
+
                         @if( $product -> product_price == 0 )
                             <h3 class="text-xl py-3">定價: 來電詢價 </h3>
                         @else
                             <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
+                            <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
                         @endif
                         <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                     </div>
@@ -75,6 +74,7 @@
         
     </div>
     
+    <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
     <script>
         let cart_submit = document.getElementById('product_cart_submit');
         let product_id = "{{ $product -> id }}";

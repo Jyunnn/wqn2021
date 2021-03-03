@@ -18,4 +18,4 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 ]);
 
 
-mix.js('resources/js/hello.jsx', 'public/js').react();
+mix.js('resources/js/ProductPriceCount/all.js', 'public/js/ProductPriceCount').react();
