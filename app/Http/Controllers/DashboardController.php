@@ -110,16 +110,16 @@ class DashboardController extends Controller
         DB::table('products')->where('id', $id)
         ->update(
             [
-                'product_type' => $request -> product_type,
-                'product_dm_number' => $request->product_dm_number,
-                'product_name' => $request->product_name,
+                'product_type' => $request -> input('product_type'),
+                'product_dm_number' => $request-> input('product_dm_number'),
+                'product_name' => $request-> input('product_name'),
                 // 'product_imgsrc1' => $request->product_imgsrc1,
                 // 'product_imgsrc2' => $request->product_imgsrc2,
                 // 'product_imgsrc3' => $request->product_imgsrc3,
-                'product_attr' => explode(',', $request ->input('product_attr')),
-                'product_price' => $request -> product_price,
-                'product_qty' => $request->product_qty,
-                'product_content' => $request->product_content
+                'product_attr' => $request ->input('product_attr'),
+                'product_price' => $request -> input('product_price'),
+                'product_qty' => $request-> input('product_qty'),
+                'product_content' => $request-> input('product_content'),
             ],
         );
 

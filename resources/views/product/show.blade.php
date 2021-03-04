@@ -50,7 +50,7 @@
                         <div>
                             @if($product -> product_attr)
                                 <h3 class="text-xl"> 商品屬性：</h3>
-                                @foreach(json_decode($product -> product_attr, true) as $attr)
+                                @foreach( explode(",",$product -> product_attr) as $attr)
                                     <input type="radio" value="{{ $attr }}" name="attr">
                                     <label>{{ $attr }}</label>
                                 @endforeach
