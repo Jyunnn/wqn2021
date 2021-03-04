@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-//新增商品
-use App\Models\Product;
+
 use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
@@ -39,6 +38,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
+        dump($request);
         $file1 = $request->file('product_imgsrc1');
         $file2 = $request->file('product_imgsrc2');
         $file3 = $request->file('product_imgsrc3');
@@ -46,27 +46,30 @@ class DashboardController extends Controller
         $path1 = $file1->store('public');
         $url1 = Storage::url($path1);
 
-        $product = new Product;
-        $product->product_type = $request->product_type;
-        $product->product_dm_number = $request->product_dm_number;
-        $product->product_name = $request->product_name;
-        $product->product_imgsrc1 = $url1;
-        $product->product_attr = explode(',', $request->product_attr);
-        // $product->product_attr = $request->product_attr;
-        $product->product_price = $request->product_price;
-        $product->product_qty = $request->product_qty;
-        $product->product_content = $request->product_content;
-        $product->product_show = 1;
-        $product->save();
+        DB::table('products')->insert([
+            'product_type' => $request ->input('product_type'),
+            'product_dm_number' => $request ->input('product_dm_number'),
+            'product_name' => $request ->input('product_name'),
+            'product_imgsrc1' => $url1,
+            'product_attr' => $request ->input('product_attr'),
+            'product_price' => $request ->input('product_price'),
+            'product_qty' => $request ->input('product_qty'),
+            'product_content' => $request ->input('product_content'),
+            'product_show' => 1,
+        ]);
 
         if($file2 && $file3) {
             $path2 = $file2->store('public');
             $path3 = $file3->store('public');
             $url2 = Storage::url($path2);
             $url3 = Storage::url($path3);
-            $product->product_imgsrc2 = $url2;
-            $product->product_imgsrc3 = $url3;
+            DB::table('products')->insert([
+                'product_imgsrc2' => $url2,
+                'product_imgsrc3' => $url3,
+            ]);
         }
+
+        return redirect()->route('dashboard.list');
     }
 
     /**
@@ -113,7 +116,7 @@ class DashboardController extends Controller
                 // 'product_imgsrc1' => $request->product_imgsrc1,
                 // 'product_imgsrc2' => $request->product_imgsrc2,
                 // 'product_imgsrc3' => $request->product_imgsrc3,
-                'product_attr' => explode(',', $request->product_attr),
+                'product_attr' => explode(',', $request ->input('product_attr')),
                 'product_price' => $request -> product_price,
                 'product_qty' => $request->product_qty,
                 'product_content' => $request->product_content
@@ -131,7 +134,15 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('products')->where('id', '=', $id)->delete();
+        $product = DB::table('products')->where('id', $id)->first();
+
+        if(is_null($product)){
+            return redirect()->route('dashboard.index');
+        };
+
+        DB::table('products')->where('id', $id)->delete();
+        
+        return redirect()->route('dashboard.list');
     }
 
     public function list()
