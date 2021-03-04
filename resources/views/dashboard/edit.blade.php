@@ -57,7 +57,7 @@
                     上傳圖片1: <input type="file" name="product_imgsrc1" id="product_imgsrc">
                 </label>
                 <p class="text-xs text-red-600">(必要,將置於主圖,建議450*450)</p>
-                <img class="w-150 h-150" src="{{asset( $product -> product_imgsrc1 )}}" alt="">
+                <img class="w-100 h-100" src="{{asset( $product -> product_imgsrc1 )}}" alt="">
             </div>
 
             <div class="py-2">
@@ -66,7 +66,7 @@
                 </label>
                 <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
                 @if ($product -> product_imgsrc2)
-                    <img class="w-150 h-150" src="{{asset( $product -> product_imgsrc2 )}}" alt="">
+                    <img class="w-100 h-100" src="{{asset( $product -> product_imgsrc2 )}}" alt="">
                 @endif
             </div>
 
@@ -76,14 +76,14 @@
                 </label>
                 <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
                 @if ($product -> product_imgsrc3)
-                    <img class="w-150 h-150" src="{{asset( $product -> product_imgsrc3 )}}" alt="">
+                    <img class="w-100 h-100" src="{{asset( $product -> product_imgsrc3 )}}" alt="">
                 @endif
             </div>
 
             <div class="py-2">
                 <label for="product_attr">商品屬性</label>
                 <input class="rounded-md p-1" type="text" name="product_attr" id="product_attr" value="{{ $product -> product_attr }}">
-                <p class="text-xs text-red-600">(非必填)</p>
+                <p class="text-xs text-red-600">(非必填,但填寫屬性要用"逗號"分開,例如: 紅,綠,藍)</p>
             </div>
 
             <div class="py-2">

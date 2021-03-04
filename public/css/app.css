@@ -11571,8 +11571,8 @@ select {
   height: 24rem;
 }
 
-.h-150 {
-  height: 150px;
+.h-100 {
+  height: 100px;
 }
 
 .h-450 {
@@ -27202,8 +27202,8 @@ select {
   width: 24rem;
 }
 
-.w-150 {
-  width: 150px;
+.w-100 {
+  width: 100px;
 }
 
 .w-450 {
@@ -42269,8 +42269,8 @@ select {
     height: 24rem;
   }
 
-  .sm\:h-150 {
-    height: 150px;
+  .sm\:h-100 {
+    height: 100px;
   }
 
   .sm\:h-450 {
@@ -57887,8 +57887,8 @@ select {
     width: 24rem;
   }
 
-  .sm\:w-150 {
-    width: 150px;
+  .sm\:w-100 {
+    width: 100px;
   }
 
   .sm\:w-450 {
@@ -72889,8 +72889,8 @@ select {
     height: 24rem;
   }
 
-  .md\:h-150 {
-    height: 150px;
+  .md\:h-100 {
+    height: 100px;
   }
 
   .md\:h-450 {
@@ -88507,8 +88507,8 @@ select {
     width: 24rem;
   }
 
-  .md\:w-150 {
-    width: 150px;
+  .md\:w-100 {
+    width: 100px;
   }
 
   .md\:w-450 {
@@ -103509,8 +103509,8 @@ select {
     height: 24rem;
   }
 
-  .lg\:h-150 {
-    height: 150px;
+  .lg\:h-100 {
+    height: 100px;
   }
 
   .lg\:h-450 {
@@ -119127,8 +119127,8 @@ select {
     width: 24rem;
   }
 
-  .lg\:w-150 {
-    width: 150px;
+  .lg\:w-100 {
+    width: 100px;
   }
 
   .lg\:w-450 {
@@ -134129,8 +134129,8 @@ select {
     height: 24rem;
   }
 
-  .xl\:h-150 {
-    height: 150px;
+  .xl\:h-100 {
+    height: 100px;
   }
 
   .xl\:h-450 {
@@ -149747,8 +149747,8 @@ select {
     width: 24rem;
   }
 
-  .xl\:w-150 {
-    width: 150px;
+  .xl\:w-100 {
+    width: 100px;
   }
 
   .xl\:w-450 {
@@ -164749,8 +164749,8 @@ select {
     height: 24rem;
   }
 
-  .\32xl\:h-150 {
-    height: 150px;
+  .\32xl\:h-100 {
+    height: 100px;
   }
 
   .\32xl\:h-450 {
@@ -180367,8 +180367,8 @@ select {
     width: 24rem;
   }
 
-  .\32xl\:w-150 {
-    width: 150px;
+  .\32xl\:w-100 {
+    width: 100px;
   }
 
   .\32xl\:w-450 {

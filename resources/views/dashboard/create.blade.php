@@ -75,7 +75,7 @@
                     <div class="py-2">
                         <label for="product_attr">商品屬性</label>
                         <input class="rounded-md p-1" type="text" name="product_attr" id="product_attr" value="{{ old('title') }}">
-                        <p class="text-xs text-red-600">(非必填)</p>
+                        <p class="text-xs text-red-600">(非必填,但填寫屬性要用"逗號"分開,例如: 紅,綠,藍)</p>
                     </div>
 
                     <div class="py-2">

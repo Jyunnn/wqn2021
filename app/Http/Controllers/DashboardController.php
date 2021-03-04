@@ -51,7 +51,8 @@ class DashboardController extends Controller
         $product->product_dm_number = $request->product_dm_number;
         $product->product_name = $request->product_name;
         $product->product_imgsrc1 = $url1;
-        $product->product_attr = $request->product_attr;
+        $product->product_attr = explode(',', $request->product_attr);
+        // $product->product_attr = $request->product_attr;
         $product->product_price = $request->product_price;
         $product->product_qty = $request->product_qty;
         $product->product_content = $request->product_content;
@@ -112,7 +113,7 @@ class DashboardController extends Controller
                 // 'product_imgsrc1' => $request->product_imgsrc1,
                 // 'product_imgsrc2' => $request->product_imgsrc2,
                 // 'product_imgsrc3' => $request->product_imgsrc3,
-                'product_attr' => $request->product_attr,
+                'product_attr' => explode(',', $request->product_attr),
                 'product_price' => $request -> product_price,
                 'product_qty' => $request->product_qty,
                 'product_content' => $request->product_content

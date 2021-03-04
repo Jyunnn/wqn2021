@@ -12,22 +12,30 @@
         <div class="container mx-auto">
             <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
                 <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
-                    <div class="w-450 h-450">
-                        <img class="mySlides" src="{{ asset($product -> product_imgsrc1) }}" style="">
-                        <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
-                        <img class="mySlides" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;display:none">
+                    <div class="w-450 xl:h-450">
+                        <img class="mySlides w-full" src="{{ asset($product -> product_imgsrc1) }}" style="">
+                        @if($product -> product_imgsrc2)
+                            <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
+                        @endif
+                        @if($product -> product_imgsrc3)
+                            <img class="mySlides" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;display:none">
+                        @endif
                     </div>
                     <div>
                         <div class="flex flex-row md:flex-col">
-                            <div class="w-150 h-150">
+                            <div class="w-100 h-100">
                                 <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc1) }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
                             </div>
-                            <div class="w-150 h-150">
+                            @if($product -> product_imgsrc2)
+                            <div class="w-100 h-100">
                                 <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc2) }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
                             </div>
-                            <div class="w-150 h-150">
+                            @endif
+                            @if($product -> product_imgsrc2)
+                            <div class="w-100 h-100">
                                 <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -43,8 +51,8 @@
                             @if($product -> product_attr)
                                 <h3 class="text-xl"> 商品屬性：</h3>
                                 @foreach(json_decode($product -> product_attr, true) as $attr)
-                                    <input type="radio" name="{{ $attr }}" id="">
-                                    <label for="">{{ $attr }}</label>
+                                    <input type="radio" value="{{ $attr }}" name="attr">
+                                    <label>{{ $attr }}</label>
                                 @endforeach
                             @endif
                         </div>
