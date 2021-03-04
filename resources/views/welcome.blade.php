@@ -106,7 +106,7 @@
                     <a href="{{ route('login') }}" class="block px-4">管理員登入</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-gray-700">註冊</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-gray-700">註冊1</a>
                     @endif
                 @endauth
             </div>
