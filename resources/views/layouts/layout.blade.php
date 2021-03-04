@@ -13,8 +13,10 @@
     <nav class="relative flex items-top justify-center shadow dark:bg-gray-900 sm:items-center sm:pt-0">
         <div class="container flex items-center">
             <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
-            <a class="p-6 block box-border hover:border border-yellow-400" href="/">首頁</a>
-            <a class="p-6 block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+            <div class="mx-5">
+                <a class="p-6 inline-block box-border hover:border border-yellow-400" href="/">首頁</a>
+                <a class="p-6 inline-block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+            </div>
             <div class="flex ml-auto">
                 <form class="mr-3" action="{{ route('product.find') }}" method="get">
                     <select class="border-0" name="type" id="">
