@@ -39,7 +39,13 @@
                             <td> {{ $product->product_qty }} </td>
                             <td> {{ $product->product_show }}  </td>
                             <td><a href="{{ route('dashboard.edit', ['dashboard' => $product-> id]) }}">✍️</a></td>
-                            <td><a onclick="return confirm('確定要刪除嗎?刪除後不能再還原')" href="{{ route('dashboard.destroy', ['dashboard' => $product-> id]) }}">❌</a></td>
+                            <td>
+                                <form action="{{ route('dashboard.destroy', ['dashboard' => $product-> id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('確定要刪除嗎?刪除後不能再還原')" type="submit">❌</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
