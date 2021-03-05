@@ -2,14 +2,14 @@
     <x-slot name="title">
     {{ $product -> product_name }}
     </x-slot>
+    
     <div class="py-8">
-
-        <div class="container mx-auto">
+        <div>
             <x-menu />
             <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
         </div>
 
-        <div class="container mx-auto">
+        <div>
             <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
                 <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
                     <div class="w-450 xl:h-450">

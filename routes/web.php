@@ -30,6 +30,10 @@ Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('
 Route::resource('product', ProductController::class);
 Route::resource('dashboard', DashboardController::class)->middleware('auth');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

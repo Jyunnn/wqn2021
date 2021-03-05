@@ -10,8 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
 <body>
-    <nav class="relative flex items-top justify-center shadow dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div class="container flex items-center">
+    <nav class="items-top justify-center shadow dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="max-w-7xl mx-auto flex items-center">
             <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
             <div class="mx-5">
                 <a class="p-6 inline-block box-border hover:border border-yellow-400" href="/">首頁</a>
@@ -30,14 +30,15 @@
         </div>
     </nav>
     
-    {{ $slot }}
+    <div class="max-w-7xl mx-auto">
+        {{ $slot }}
+    </div>
 
-
-    <footer class="container mx-auto py-4 text-center">
+    <footer class="max-w-7xl mx-auto py-4 text-center">
             <div class="flex justify-center">
-                <a class="block px-4" href="">首頁</a>
+                <a class="block px-4" href="/">首頁</a>
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>
-                <a class="block px-4" href="">聯繫我們</a>
+                <a class="block px-4" href="{{ route('contact') }}">聯繫我們</a>
                 <a class="block px-4" href="">店面位置</a>
                 @auth
                     <a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>

@@ -4,7 +4,6 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="container mx-auto">
             <x-menu />
             <div class="grid grid-cols-12 gap-5">
                 <div class="col-span-12">
@@ -32,7 +31,6 @@
                     {{ $products->links() }}
                 </div>
             </div>
-        </div>
     </div>
 </x-layout>
 

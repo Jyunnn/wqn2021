@@ -7,8 +7,8 @@
         <link rel="stylesheet" href=" {{ asset('css/app.css')}} ">
     </head>
     <body>
-        <nav class="relative flex items-top justify-center shadow-2xl dark:bg-gray-900 sm:items-center sm:pt-0">
-            <div class="container flex items-center">
+        <nav class="items-top justify-center shadow-2xl dark:bg-gray-900 sm:items-center sm:pt-0">
+            <div class="max-w-7xl mx-auto flex items-center">
                 <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
                 <a class="p-6 block box-border hover:border border-yellow-400" href="/">首頁</a>
                 <a class="p-6 block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
@@ -26,12 +26,12 @@
         </nav>
 
         <div class="bg-yellow-300 hidden sm:block">
-            <div class="container mx-auto">
+            <div class="max-w-7xl mx-auto">
                 <img class="border-1/2" src="https://ps.w.org/simple-banner/assets/banner-1544x500.png?rev=1198696" alt="">
             </div>
         </div>
 
-        <div class="container flex mx-auto py-4 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
+        <div class="max-w-7xl flex mx-auto py-4 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
 
             <div class="">
                 <div>
@@ -88,13 +88,13 @@
         </div>
 
         <div class="bg-red-400 py-12 md:py-24">
-            <div class="container mx-auto">
+            <div class="max-w-7xl mx-auto">
                 <p class="text-2xl font-black py-2 text-center"> 關於我們 </p>
                 <p class="text-center"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero maxime reiciendis dolores atque repellendus, temporibus minima ea unde voluptatibus corrupti alias quasi ipsam hic dolorum doloremque animi velit eum.</p>
             </div>
         </div>
 
-        <footer class="container mx-auto py-4 text-center">
+        <footer class="max-w-7xl mx-auto py-4 text-center">
             <div class="flex justify-center">
                 <a class="block px-4" href="">首頁</a>
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>
