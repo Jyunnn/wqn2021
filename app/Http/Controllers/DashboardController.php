@@ -52,7 +52,6 @@ class DashboardController extends Controller
         $product->product_name = $request->product_name;
         $product->product_imgsrc1 = $url1;
         $product->product_attr = explode(',', $request->product_attr);
-        // $product->product_attr = $request->product_attr;
         $product->product_price = $request->product_price;
         $product->product_qty = $request->product_qty;
         $product->product_content = $request->product_content;
