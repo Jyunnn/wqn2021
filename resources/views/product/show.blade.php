@@ -13,7 +13,7 @@
             <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
                 <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
                     <div class="w-450 xl:h-450">
-                        <img class="mySlides w-full" src="{{ asset($product -> product_imgsrc1) }}" style="">
+                        <img class="mySlides w-full" src="{{ asset($product -> product_imgsrc1) }}">
                         @if($product -> product_imgsrc2)
                             <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
                         @endif
