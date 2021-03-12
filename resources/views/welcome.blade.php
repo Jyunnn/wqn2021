@@ -5,12 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>文光行</title>
         <link rel="stylesheet" href=" {{ asset('css/app.css')}} ">
-        <style>
-            .about {
-                background:url()
-            }
-        </style>
-
     </head>
     <body>
         <nav class="items-top justify-center shadow-2xl dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -137,5 +131,6 @@
 
         </footer>
         <script src="{{ asset('js/swiper.js') }}"></script>
+
     </body>
 </html>
