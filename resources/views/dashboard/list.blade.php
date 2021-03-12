@@ -14,6 +14,32 @@
                     <input type="submit" value="搜尋">
                 </form>
 
+                <form class="py-3" action="{{ route('dashboard.find') }}" method="get">
+                    <select>
+                        <option value="書寫筆">書寫筆</option>
+                        <option value="修正文具">修正文具</option>
+                        <option value="印章墨水">印章墨水</option>
+                        <option value="包裝黏著">包裝黏著</option>
+                        <option value="桌上五金">桌上五金</option>
+                        <option value="裝訂事務">裝訂事務</option>
+                        <option value="度量衡">度量衡</option>
+                        <option value="紙製品">紙製品</option>
+                        <option value="標示貼牌">標示貼牌</option>
+                        <option value="檔案夾">檔案夾</option>
+                        <option value="檔案收納">檔案收納</option>
+                        <option value="辦公傢俱">辦公傢俱</option>
+                        <option value="事務機器">事務機器</option>
+                        <option value="耗材紙類">耗材紙類</option>
+                        <option value="電腦耗材">電腦耗材</option>
+                        <option value="美術用品">美術用品</option>
+                        <option value="運動益智用品">運動益智用品</option>
+                        <option value="五金百貨">五金百貨</option>
+                        <option value="清潔用品">清潔用品</option>
+                        <option value="辦公茶水">辦公茶水</option>
+                    </select>
+                    <input type="submit" value="搜尋">
+                </form>
+
                 <table class="my-3 table-auto w-full text-center">
                     <thead class="border-b">
                         <tr>

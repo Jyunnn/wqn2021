@@ -5,13 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>文光行</title>
         <link rel="stylesheet" href=" {{ asset('css/app.css')}} ">
+        <style>
+            .about {
+                background:url()
+            }
+        </style>
+
     </head>
     <body>
         <nav class="items-top justify-center shadow-2xl dark:bg-gray-900 sm:items-center sm:pt-0">
             <div class="max-w-7xl mx-auto flex items-center">
                 <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
-                <a class="p-6 block box-border hover:border border-yellow-400" href="/">首頁</a>
-                <a class="p-6 block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+                <div class="mx-5">
+                    <a class="p-6 inline-block box-border hover:border border-yellow-400" href="/">首頁</a>
+                    <a class="p-6 inline-block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+                </div>
                 <div class="hidden md:block flex ml-auto">
                     <form class="mr-3" action="{{ route('product.find') }}" method="get">
                         <select class="border-0" name="type" id="">
@@ -26,10 +34,22 @@
         </nav>
 
         <div class="bg-yellow-300 hidden sm:block">
-            <div class="max-w-7xl mx-auto">
-                <img class="border-1/2" src="https://ps.w.org/simple-banner/assets/banner-1544x500.png?rev=1198696" alt="">
+            <div class="swiper-container max-w-7xl mx-auto">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
+                    </div>
+
+                </div>
+                <!-- Add Arrows  -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
+
 
         <div class="max-w-7xl flex mx-auto py-4 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
 
@@ -87,10 +107,13 @@
 
         </div>
 
-        <div class="bg-red-400 py-12 md:py-24">
-            <div class="max-w-7xl mx-auto">
-                <p class="text-2xl font-black py-2 text-center"> 關於我們 </p>
-                <p class="text-center"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero maxime reiciendis dolores atque repellendus, temporibus minima ea unde voluptatibus corrupti alias quasi ipsam hic dolorum doloremque animi velit eum.</p>
+        <div class="bg-red-400 py-12 md:py-20" style=" background: url( {{ asset('images/wqn_bg.png')}} ) no-repeat center center / 100%">
+            <div class="max-w-7xl mx-auto" style="background: rgba(255,255,255,0.7) ;">
+                <p class="text-4xl font-black py-2 text-center"> 關於文光行 </p>
+                <br>
+                <p class="text-center py-2">
+                    成立於民國52年,新竹地區文具批發商之一Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium dicta qui in quibusdam ab culpa earum repudiandae iure omnis suscipit? Hic nobis accusantium pariatur voluptates! Quam error amet doloremque omnis?
+                </p>
             </div>
         </div>
 
@@ -113,7 +136,6 @@
            <p class="pt-4">Copyright© 2021 文光行</p>
 
         </footer>
-
-
+        <script src="{{ asset('js/swiper.js') }}"></script>
     </body>
 </html>
