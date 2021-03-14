@@ -11,7 +11,7 @@
             <div class="p-5 bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <form action="{{ route('dashboard.update', ['dashboard' => $product -> id]) }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            @method('PATCH')
             <div class="py-2">
                 <label for="product_type">商品類別</label>
                 <select name="product_type" id="product_type">
