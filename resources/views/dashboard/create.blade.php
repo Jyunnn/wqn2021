@@ -53,10 +53,30 @@
 
                     <div class="py-2">
                         <label for="product_imgsrc">
-                            上傳圖片1: <input type="file" name="product_imgsrc1" id="product_imgsrc">
+                            上傳圖片1: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
                         </label>
                         <p class="text-xs text-red-600">(必要,將置於主圖,建議450*450)</p>
+                        <img id="preview_product_imgsrc">
                     </div>
+
+                    <script>
+                        var input = document.querySelector('input[name=product_imgsrc1]');
+                        input.addEventListener('change', function(e){
+                            readUrl(e.target);
+                        });
+
+                        function readUrl(input){
+                            let reader = new FileReader();
+                            reader.onload = function(e) {
+                                let imgId = input.getAttribute('data-target');
+                                let img = document.querySelector('#'+imgId);
+                                img.setAttribute('src', e.target.result)
+                                img.setAttribute('alt', e.target.result)
+                                img.setAttribute('class', "w-56 h-56")
+                            }
+                            reader.readAsDataURL(input.files[0])
+                        }
+                    </script>
 
                     <div class="py-2">
                         <label for="product_imgsrc">

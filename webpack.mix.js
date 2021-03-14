@@ -18,4 +18,5 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 ]);
 
 
+mix.js('resources/js/swiper.js', 'public/js/swiper.js');
 mix.js('resources/js/ProductPriceCount/all.js', 'public/js/ProductPriceCount').react();

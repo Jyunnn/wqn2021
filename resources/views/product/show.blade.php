@@ -10,8 +10,8 @@
         </div>
 
         <div>
-            <div class="flex grid grid-cols-1 md:grid-cols-2 md:gap-4">
-                <div class="flex flex-col md:flex-row items-center p-5 mb-3 border">
+            <div class="flex grid grid-cols-1 p-2 md:p-0 md:grid-cols-2 md:gap-4">
+                <div class="flex flex-col md:flex-row items-center p-5 border">
                     <div class="w-450 xl:h-450">
                         <img class="mySlides w-full" src="{{ asset($product -> product_imgsrc1) }}">
                         @if($product -> product_imgsrc2)
@@ -69,12 +69,10 @@
                     </div>
                 </div>
             </div>
-            <hr class="py-5">
+            <div class="h-0.5 my-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
             <div>
-                <div class="bg-gray-100 p-3">
-                    <h2 class="text-3xl">商品說明</h2>
-                </div>
-                <div class="p-3">
+                <h2 class="text-3xl">商品說明</h2>
+                <div>
                 {!! htmlspecialchars_decode($product -> product_content) !!}
                 </div>
             </div>

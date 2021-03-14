@@ -107,13 +107,18 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $file1 = $request->file('product_imgsrc1');
+        $path1 = $file1->store('public');
+        $url1 = Storage::url($path1);
+
         DB::table('products')->where('id', $id)
         ->update(
             [
                 'product_type' => $request -> input('product_type'),
                 'product_dm_number' => $request-> input('product_dm_number'),
                 'product_name' => $request-> input('product_name'),
-                // 'product_imgsrc1' => $request->product_imgsrc1,
+                'product_imgsrc1' => $url1,
                 // 'product_imgsrc2' => $request->product_imgsrc2,
                 // 'product_imgsrc3' => $request->product_imgsrc3,
                 'product_attr' => $request ->input('product_attr'),
