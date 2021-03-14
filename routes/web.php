@@ -28,7 +28,8 @@ Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('
 Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('auth')->name('dashboard.find');
 
 Route::resource('product', ProductController::class);
-Route::resource('dashboard', DashboardController::class)->middleware('auth');
+Route::resource('dashboard', DashboardController::class);
+// Route::resource('dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -37,9 +38,5 @@ Route::get('/contact', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
-
-Route::get('/product/create', function () {
-    return view('product.create');
-})->middleware(['auth'])->name('product.create');
 
 require __DIR__.'/auth.php';

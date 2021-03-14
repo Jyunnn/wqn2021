@@ -38,7 +38,14 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request);
+        $validated  = $request -> validate([
+            'product_dm_number' => 'integer',
+            'product_name' => 'required',
+            'product_price' => 'required|integer',
+            'product_qty' => 'required|integer',
+            'product_content' => 'required',
+        ]);
+
         $file1 = $request->file('product_imgsrc1');
         $file2 = $request->file('product_imgsrc2');
         $file3 = $request->file('product_imgsrc3');
@@ -69,7 +76,8 @@ class DashboardController extends Controller
             ]);
         }
 
-        return redirect()->route('dashboard.list');
+        // return redirect()->route('dashboard.list');
+        return response(true);
     }
 
     /**
