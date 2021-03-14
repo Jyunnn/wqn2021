@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Validator;
+
 class DashboardController extends Controller
 {
     /**
@@ -38,13 +40,17 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $validated  = $request -> validate([
+        $validator = Validator::make($request->all(), [
             'product_dm_number' => 'integer',
             'product_name' => 'required',
             'product_price' => 'required|integer',
             'product_qty' => 'required|integer',
             'product_content' => 'required',
         ]);
+
+        if( $validator->fails() ){
+            return response($validator->errors(),400);
+        }
 
         $file1 = $request->file('product_imgsrc1');
         $file2 = $request->file('product_imgsrc2');
