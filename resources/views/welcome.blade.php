@@ -127,7 +127,7 @@
                     @endif
                 @endauth
             </div>
-           <p class="pt-4">Copyright© 2021 文光行</p>
+            <p class="pt-4 text-xs text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.1)">Web Design by Jyunnn - 2021 文光行</p>
 
         </footer>
         <script src="{{ asset('js/swiper.js') }}"></script>
