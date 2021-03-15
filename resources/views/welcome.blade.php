@@ -101,13 +101,39 @@
 
         </div>
 
-        <div class="bg-red-400 py-12 md:py-20" style=" background: url( {{ asset('images/wqn_bg.png')}} ) no-repeat center center / 100%">
+        <div class="bg-red-400 py-12" style=" background: url( {{ asset('images/wqn_bg.png')}} ) no-repeat center center / 100%">
             <div class="max-w-7xl mx-auto" style="background: rgba(255,255,255,0.7) ;">
-                <p class="text-4xl font-black py-2 text-center"> 關於文光行 </p>
+                <p class="text-2xl font-black py-2 text-center"> 關於文光行 </p>
                 <br>
                 <p class="text-center py-2">
                     成立於民國52年,新竹地區文具批發商之一Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium dicta qui in quibusdam ab culpa earum repudiandae iure omnis suscipit? Hic nobis accusantium pariatur voluptates! Quam error amet doloremque omnis?
                 </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl py-3 mx-auto flex grid grid-cols-4">
+            <div class="flex justify-center items-center bg-yellow-300">
+                <p class="text-2xl inline-block font-black">最新公告</p>
+            </div>
+            <div class="col-span-3">
+                <ul class="max-w-7xl mx-auto p-2">
+                    <li class="flex flex-col p-5 my-1 box-border border-b-2">
+                        <div class="h-6 overflow-hidden">
+                            <p>部分文具調漲</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col p-5 box-border border-b-2">
+                        <div class="h-6 overflow-hidden">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati temporibus, quasi minima animi in laborum rerum dolores! Itaque nostrum nesciunt voluptatum in hic quis quo minus aliquam nam, reprehenderit eaque?</p>
+                        </div>
+                        <a href="">more..</a>
+                    </li>
+                    <li class="flex flex-col p-5 box-border border-b-2">
+                        <div class="h-6 overflow-hidden">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati temporibus, quasi minima animi in laborum rerum dolores! Itaque nostrum nesciunt voluptatum in hic quis quo minus aliquam nam, reprehenderit eaque?</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
