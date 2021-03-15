@@ -31,6 +31,7 @@
             <main>
                 {{ $slot }}
             </main>
+            <p class="pt-4 text-xs text-center text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.1)">Web Design by Jyunnn - 2021 文光行</p>
         </div>
     </body>
 </html>
