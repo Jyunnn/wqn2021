@@ -13,11 +13,11 @@
                 @csrf
                     <div class="py-2">
                         @if ($errors->any())
-                            <div class="text-red-600 mb-5">
-                                <p class="text-xl">建立內容有誤：</p>
+                            <div class="text-red-600 mb-5 p-5 border border-red-600">
+                                <p class="text-xl font-bold">ERROR!! 建立內容有誤：</p>
                                 <ol>
                                     @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
+                                        <li class="text-xs">{{ $error }}</li>
                                     @endforeach
                                 </ol>
                             </div>
