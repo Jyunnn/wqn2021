@@ -12,6 +12,16 @@
                 <form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                     <div class="py-2">
+                        @if ($errors->any())
+                            <div class="text-red-600 mb-5">
+                                <p class="text-xl">建立內容有誤：</p>
+                                <ol>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ol>
+                            </div>
+                        @endif
                         <label for="product_type">商品類別</label>
                         <select name="product_type" id="product_type">
                             <option value="書寫筆">書寫筆</option>
@@ -48,7 +58,6 @@
                         <label for="product_name">商品名稱</label>
                         <input class="rounded-md p-1 w-full" type="text" name="product_name" id="product_name" value="{{ old('title') }}">
                         <p class="text-xs text-red-600">(必要,搜尋功能將搜尋這個項目)</p>
-                        <p> {{ $errors->products->first('product_name') }} </p>
                     </div>
 
                     <div class="py-2">
@@ -113,7 +122,7 @@
                     <div class="my-5">
                         <label for="product_content">商品內容</label>
                         <p class="text-xs text-red-600">(必須填寫,不然客人不知道這是啥)</p>
-                        <textarea name="product_content" id="editor">&lt;p&gt;輸入商品內容.&lt;/p&gt;</textarea >
+                        <textarea name="product_content" id="editor">&lt;p&gt;輸入商品內容&lt;/p&gt;</textarea >
                     </div>
 
                     <div class="my-5">
@@ -122,6 +131,7 @@
                 </form>
             </div>
         </div>
+
     </div>
     <script>
         ClassicEditor

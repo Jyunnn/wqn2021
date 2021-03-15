@@ -41,23 +41,34 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_dm_number' => 'integer',
+            'product_dm_number' => 'nullable|integer',
             'product_name' => 'required',
+            'product_imgsrc1' => 'required',
             'product_price' => 'required|integer',
             'product_qty' => 'required|integer',
             'product_content' => 'required',
+        ],[
+            'product_dm_number.integer' => '目錄編號必須是數字',
+            'product_name.required' => '商品名稱為必填項目',
+            'product_imgsrc1.required' => '上傳圖片1必填選擇一張圖',
+            'product_price.required' => '價錢為必填項目,且必須是數字',
+            'product_qty.required' => '庫存為必填項目且,必須是數字',
+            'product_content.required' => '商品內容為必填項目'
         ]);
 
         if( $validator->fails() ){
-            return response($validator->errors(),400);
+            return redirect()->route('dashboard.create')->withErrors($validator);
         }
 
         $file1 = $request->file('product_imgsrc1');
         $file2 = $request->file('product_imgsrc2');
         $file3 = $request->file('product_imgsrc3');
 
-        $path1 = $file1->store('public');
-        $url1 = Storage::url($path1);
+        if( $file1 ) {
+            $path1 = $file1->store('public');
+            $url1 = Storage::url($path1);
+        };
+
 
         DB::table('products')->insert([
             'product_type' => $request ->input('product_type'),
@@ -82,8 +93,8 @@ class DashboardController extends Controller
             ]);
         }
 
-        // return redirect()->route('dashboard.list');
-        return response(true);
+        return redirect()->route('dashboard.list')->with('success', '已成功上架');
+        // return response(true);
     }
 
     /**
