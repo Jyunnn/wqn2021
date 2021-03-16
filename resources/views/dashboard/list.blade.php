@@ -8,14 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-5 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                        @php
-                            Session::forget('success');
-                        @endphp
-                    </div>
-                @endif
                 <form class="py-3" action="{{ route('dashboard.find') }}" method="get">
                     <input type="text" name="keyword" id="">
                     <input type="submit" value="搜尋">

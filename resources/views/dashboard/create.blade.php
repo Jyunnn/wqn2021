@@ -50,13 +50,13 @@
 
                     <div class="py-2">
                         <label for="product_dm_number">目錄編號</label>
-                        <input class="rounded-md p-1" type="text" name="product_dm_number" id="product_dm_number" value="{{ old('title') }}">
+                        <input class="rounded-md p-1" type="text" name="product_dm_number" id="product_dm_number" value="{{ old('product_dm_number') }}">
                         <p class="text-xs text-red-600">(非必填,但有建檔比較好查詢,搜尋功能有做這欄位的搜尋)</p>
                     </div>
 
                     <div class="py-2">
                         <label for="product_name">商品名稱</label>
-                        <input class="rounded-md p-1 w-full" type="text" name="product_name" id="product_name" value="{{ old('title') }}">
+                        <input class="rounded-md p-1 w-full" type="text" name="product_name" id="product_name" value="{{ old('product_name') }}">
                         <p class="text-xs text-red-600">(必要,搜尋功能將搜尋這個項目)</p>
                     </div>
 
@@ -103,7 +103,7 @@
 
                     <div class="py-2">
                         <label for="product_attr">商品屬性</label>
-                        <input class="rounded-md p-1" type="text" name="product_attr" id="product_attr" value="{{ old('title') }}">
+                        <input class="rounded-md p-1" type="text" name="product_attr" id="product_attr" value="{{ old('product_attr') }}">
                         <p class="text-xs text-red-600">(非必填,但填寫屬性要用"逗號"分開,例如: 紅,綠,藍)</p>
                     </div>
 
@@ -122,7 +122,7 @@
                     <div class="my-5">
                         <label for="product_content">商品內容</label>
                         <p class="text-xs text-red-600">(必須填寫,不然客人不知道這是啥)</p>
-                        <textarea name="product_content" id="editor">&lt;p&gt;輸入商品內容&lt;/p&gt;</textarea >
+                        <textarea name="product_content" id="editor" value="{{ old('product_content') }}">&lt;p&gt;輸入商品內容&lt;/p&gt;</textarea >
                     </div>
 
                     <div class="my-5">

@@ -34,6 +34,7 @@
                         </li>
                     @endforeach
                 </ul>
+                {{ $products->links() }}
                 @else
                 <p>沒有結果</p>
                 @endif

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Product;
+
 class DashboardController extends Controller
 {
     /**
@@ -57,7 +59,7 @@ class DashboardController extends Controller
         ]);
 
         if( $validator->fails() ){
-            return redirect()->route('dashboard.create')->withErrors($validator);
+            return redirect()->back()->withInput()->withErrors($validator);
         }
 
         $file1 = $request->file('product_imgsrc1');
@@ -68,7 +70,6 @@ class DashboardController extends Controller
             $path1 = $file1->store('public');
             $url1 = Storage::url($path1);
         };
-
 
         DB::table('products')->insert([
             'product_type' => $request ->input('product_type'),
@@ -93,8 +94,7 @@ class DashboardController extends Controller
             ]);
         }
 
-        return redirect()->route('dashboard.list')->with('success', '已成功上架');
-        // return response(true);
+        return redirect()->route('dashboard.list');
     }
 
     /**
@@ -116,7 +116,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
+        $product = Product::find($id);
         if(is_null($product)){
             abort(404);
         };
@@ -168,27 +168,25 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
-
+        // $product = DB::table('products')->where('id', $id)->first();
+        $product = Product::find($id);
         if(is_null($product)){
             return redirect()->route('dashboard.index');
         };
-
-        DB::table('products')->where('id', $id)->delete();
-        
+        $product->delete();
         return redirect()->route('dashboard.list');
     }
 
     public function list()
     {
-        $products = DB::table('products')->paginate(20);
+        $products = Product::paginate(10);
         return view('dashboard.list', ['products' => $products]);
     }
 
     public function find(Request $request)
     {
         $keyword = $request->query()["keyword"];
-        $products = DB::table('products')->where('product_name','LIKE','%'.$keyword.'%')->paginate(20);
+        $products = Product::where('product_name', 'LIKE' , '%'.$keyword.'%' )->paginate(20);
         return view('dashboard.find', ['products' => $products]);
     }
 }
