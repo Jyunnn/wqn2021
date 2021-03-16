@@ -32,14 +32,8 @@
                 </div>
             </div>
     </div>
+    @foreach ($products as $product)
+    <livewire:product :product="$product">
+    @endforeach
+    @livewireScripts
 </x-layout>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif

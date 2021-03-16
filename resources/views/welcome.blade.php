@@ -110,7 +110,6 @@
                 </p>
             </div>
         </div>
-
         <footer class="max-w-7xl mx-auto py-4 text-center">
             <div class="flex justify-center">
                 <a class="block px-4" href="">首頁</a>
@@ -128,9 +127,7 @@
                 @endauth
             </div>
             <p class="pt-4 text-xs text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.1)">Web Design by Jyunnn - 2021 文光行</p>
-
         </footer>
         <script src="{{ asset('js/swiper.js') }}"></script>
-
     </body>
 </html>
