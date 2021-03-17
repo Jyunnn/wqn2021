@@ -3,7 +3,7 @@
         聯繫我們
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-8 max-w-7xl mx-auto">
         <p class="text-3xl font-extrabold mb-3">聯繫我們</p>
         <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
         <div class="py-5">

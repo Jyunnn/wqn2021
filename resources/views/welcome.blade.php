@@ -1,48 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>文光行</title>
-        <link rel="stylesheet" href=" {{ asset('css/app.css')}} ">
-    </head>
-    <body>
-        <nav class="items-top justify-center shadow-2xl dark:bg-gray-900 sm:items-center sm:pt-0">
-            <div class="max-w-7xl mx-auto flex items-center">
-                <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
-                <div class="mx-5">
-                    <a class="p-6 inline-block box-border hover:border border-yellow-400" href="/">首頁</a>
-                    <a class="p-6 inline-block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+
+<x-layout>
+    <x-slot name="title">
+        Index
+    </x-slot>
+
+    <div class="bg-yellow-300 max-w-full hidden sm:block">
+        <div class="swiper-container max-w-7xl mx-auto">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
                 </div>
-                <div class="hidden md:block flex ml-auto">
-                    <form class="mr-3" action="{{ route('product.find') }}" method="get">
-                        <select class="border-0" name="type" id="">
-                            <option value="product_name">商品名稱</option>
-                            <option value="product_dm_number">目錄編號</option>
-                        </select>
-                        <input name="keyword" class="border-0" type="text" placeholder="請輸入搜尋項目">
-                        <button type="submit">搜尋</button>
-                    </form>
+                <div class="swiper-slide">
+                    <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
                 </div>
             </div>
-        </nav>
-
-        <div class="bg-yellow-300 hidden sm:block">
-            <div class="swiper-container max-w-7xl mx-auto">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
-                    </div>
-
-                </div>
-                <!-- Add Arrows  -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
+            <!-- Add Arrows  -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
+    </div>
 
 
         <div class="max-w-7xl flex mx-auto py-4 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
@@ -101,33 +77,14 @@
 
         </div>
 
-        <div class="bg-red-400 py-12 md:py-20" style=" background: url( {{ asset('images/wqn_bg.png')}} ) no-repeat center center / 100%">
+        <div class="bg-red-400 py-12 md:py-20" style=" background: url( {{ asset('images/wqn_bg.png') }} ) no-repeat center center / 100%">
             <div class="max-w-7xl mx-auto" style="background: rgba(255,255,255,0.7) ;">
-                <p class="text-4xl font-black py-2 text-center"> 關於文光行 </p>
+                <p class="text-4xl font-black py-1 text-center"> 關於文光行 </p>
                 <br>
-                <p class="text-center py-2">
-                    成立於民國52年,新竹地區文具批發商之一Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium dicta qui in quibusdam ab culpa earum repudiandae iure omnis suscipit? Hic nobis accusantium pariatur voluptates! Quam error amet doloremque omnis?
+                <p class="text-center py-1">
+                    成立於民國52年，新竹地區文具批發商之一，全台皆在服務範圍內，以誠信經營、服務客戶為目的，販賣項目由文具
                 </p>
             </div>
         </div>
-        <footer class="max-w-7xl mx-auto py-4 text-center">
-            <div class="flex justify-center">
-                <a class="block px-4" href="">首頁</a>
-                <a class="block px-4" href="{{ route('product.index') }}">商品</a>
-                <a class="block px-4" href="">聯繫我們</a>
-                <a class="block px-4" href="">店面位置</a>
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
-                @else
-                    <a href="{{ route('login') }}" class="block px-4">管理員登入</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-gray-700">註冊</a>
-                    @endif
-                @endauth
-            </div>
-            <p class="pt-4 text-xs text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.1)">Web Design by Jyunnn - 2021 文光行</p>
-        </footer>
         <script src="{{ asset('js/swiper.js') }}"></script>
-    </body>
-</html>
+</x-layout>

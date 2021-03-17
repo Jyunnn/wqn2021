@@ -16,6 +16,7 @@
             <div class="mx-5">
                 <a class="p-6 inline-block box-border hover:border border-yellow-400" href="/">首頁</a>
                 <a class="p-6 inline-block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">商品</a>
+                <a class="p-6 inline-block box-border hover:border border-yellow-400" href="{{ route('product.index') }}">目錄</a>
             </div>
             <div class="flex ml-auto">
                 <form class="mr-3" action="{{ route('product.find') }}" method="get">
@@ -30,7 +31,7 @@
         </div>
     </nav>
     
-    <div class="max-w-7xl mx-auto">
+    <div class="">
         {{ $slot }}
     </div>
 
