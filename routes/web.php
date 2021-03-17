@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +28,7 @@ Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('
 Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('auth')->name('dashboard.find');
 
 Route::resource('product', ProductController::class)->only(['index','show']);
+Route::resource('cart', CartController::class)->only(['index']);
 Route::resource('dashboard', DashboardController::class)->middleware('auth')->except('show');
 
 Route::get('/contact', function () {
