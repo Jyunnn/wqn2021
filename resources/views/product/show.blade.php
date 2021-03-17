@@ -3,7 +3,7 @@
     {{ $product -> product_name }}
     </x-slot>
     
-    <div class="py-8">
+    <div class="py-8 max-w-7xl mx-auto">
         <div>
             <x-menu />
             <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>

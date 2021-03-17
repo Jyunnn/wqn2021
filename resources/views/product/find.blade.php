@@ -3,8 +3,8 @@
         商品頁面
     </x-slot>
 
-    <div class="py-8">
-        <div class="container mx-auto">
+    <div class="py-8 max-w-7xl mx-auto">
+        <div>
             <x-menu />
 
             <div class="col-span-12">
@@ -28,10 +28,15 @@
                 <p>但是這樣不如直接搜尋<span class="text-xl text-red-600">"金庫"</span></p>
                 <p>更直接的關鍵字來搜尋是最快的</p>
                 <p>前提是知道這個商品叫甚麼名字😎</p>
+                @elseif ($keyword == '46041503')
+                <p class="text-4xl">這個是文光行的統編</p>
                 @elseif (count($products) < 1)
                 <p class="text-3xl">沒有搜尋結果😞</p>
                 <br>
-                <p>有可能是還沒上架,並不是真的沒有賣這個商品</p>
+                <p>關鍵字有錯，再重新輸入吧</p>
+                <p>常打錯的字：筆<span class="text-xl text-red-600">芯</span>、替換<span class="text-xl text-red-600">帶</span></p>
+                <br>
+                <p>也有可能是還沒上架，並不是真的沒有賣這個商品或是打錯字</p>
                 <p>商品種類太多了再請給我們一些時間</p>
                 <p>有一天會把商品上架完整</p>
                 <br>
