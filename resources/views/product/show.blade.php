@@ -3,7 +3,7 @@
     {{ $product -> product_name }}
     </x-slot>
     
-    <div class="py-8">
+    <div class="py-8 max-w-7xl mx-auto">
         <div>
             <x-menu />
             <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
@@ -63,8 +63,11 @@
                             <h3 class="text-xl py-3">定價: 來電詢價 </h3>
                         @else
                             <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
-                            <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
                         @endif
+                        <div id="cookies_use_data" data-id="{{ $product -> id }}">
+                            <label for="product_cart_input">數量</label>
+                            <input id="product_cart_input" name="product_cart_input" type="number" min="1" value="1" />
+                        </div>
                         <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                     </div>
                 </div>
@@ -82,39 +85,8 @@
     </div>
     
     <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
+    <script src="{{ asset('js/cookies.js') }}"></script>
     <script>
-        let cart_submit = document.getElementById('product_cart_submit');
-        let product_id = "{{ $product -> id }}";
-
-        function getCart() {
-            let cart = Cookies.get('cart');
-            return (!cart) ? {} : JSON.parse(cart);
-        }
-
-        function saveCart(cart) {
-            Cookies.set('cart', JSON.stringify(cart))
-        }
-
-        function addProductToCart(productId, qty) {
-            let cart = getCart();
-            let quantity = parseInt(cart[productId]) || 0;
-            let addQuantity = parseInt(qty) || 0;
-            let newQuantity = quantity + addQuantity;
-            cart[productId] = newQuantity;
-            saveCart(cart);
-
-            alert(`已加入詢價,目前該商品數量 ${cart[productId]}`)
-        }
-
-        if(cart_submit) {
-            cart_submit.addEventListener('click', function(){
-                let cart_input = document.getElementById('product_cart_input');
-                if(cart_input) {
-                    addProductToCart(product_id ,cart_input.value)
-                }
-            })
-        }
-
         function currentDiv(n) {
             showDivs(slideIndex = n);
         }
