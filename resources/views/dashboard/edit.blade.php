@@ -19,7 +19,7 @@
                     <option value="修正文具" {{ $product->product_type == '修正文具' ? 'selected' : ''}}>修正文具</option>
                     <option value="印章墨水" {{ $product -> product_type == '印章墨水' ? 'selected' : ''}}>印章墨水</option>
                     <option value="包裝黏著" {{ $product -> product_type == '包裝黏著' ? 'selected' : ''}}>包裝黏著</option>
-                    <option value="桌上文具" {{ $product->product_type == '桌上五金' ? 'selected' : ''}}>桌上五金</option>
+                    <option value="桌上五金" {{ $product->product_type == '桌上五金' ? 'selected' : ''}}>桌上五金</option>
                     <option value="裝訂事務" {{ $product -> product_type == '裝訂事務' ? 'selected' : ''}}>裝訂事務</option>
                     <option value="度量衡" {{ $product -> product_type == '度量衡' ? 'selected' : ''}}>度量衡</option>
                     <option value="紙製品" {{ $product -> product_type == '紙製品' ? 'selected' : ''}}>紙製品</option>

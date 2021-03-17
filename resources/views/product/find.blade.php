@@ -13,9 +13,31 @@
                 @elseif ( $type == 'product_name')
                 <p class="text-3xl font-extrabold mb-3"> 商品名稱搜尋: {{ $keyword }}</p>
                 @endif
+
                 <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
 
-                @if( count($products) != 0)
+                @if( $type == '' || $keyword == '' ) 
+                <p class="text-3xl"> 搜尋欄位不得為空值 </p>
+                <br>
+                <p class="text-xl">嘗試使用關鍵字搜尋</p>
+                <br>
+                <p>比方說想找抽屜式,且可以手提的金庫</p>
+                <p>可以輸入<span class="text-xl text-red-600">"抽屜"</span>或是<span class="text-xl text-red-600">"手提"</span></p>
+                <p>可能就會出現想找尋的物品</p>
+                <br>
+                <p>但是這樣不如直接搜尋<span class="text-xl text-red-600">"金庫"</span></p>
+                <p>更直接的關鍵字來搜尋是最快的</p>
+                <p>前提是知道這個商品叫甚麼名字😎</p>
+                @elseif (count($products) < 1)
+                <p class="text-3xl">沒有搜尋結果😞</p>
+                <br>
+                <p>有可能是還沒上架,並不是真的沒有賣這個商品</p>
+                <p>商品種類太多了再請給我們一些時間</p>
+                <p>有一天會把商品上架完整</p>
+                <br>
+                <p>或是您可以先參考舊版目錄</p>
+                <p>但是需要一頁一頁尋找您要的商品</p>
+                @else
                 <ul class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                     @foreach ($products as $product)
                         <li class="flex flex-col p-5 box-border shadow rounded hover:shadow-md">
@@ -34,9 +56,9 @@
                         </li>
                     @endforeach
                 </ul>
-                {{ $products->links() }}
-                @else
-                <p>沒有結果</p>
+                <div class="py-3">
+                        {{ $products->links() }}
+                </div>
                 @endif
             </div>
         </div>

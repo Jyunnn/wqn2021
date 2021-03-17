@@ -71,9 +71,10 @@
             </div>
             <div class="h-0.5 my-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
             <div>
-                <h2 class="text-3xl">商品說明</h2>
+                <h2 class="text-3xl mb-3">商品說明</h2>
+                <hr class="mb-3">
                 <div>
-                {!! htmlspecialchars_decode($product -> product_content) !!}
+                    {!! htmlspecialchars_decode($product -> product_content) !!}
                 </div>
             </div>
         </div>   

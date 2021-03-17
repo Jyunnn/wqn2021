@@ -9,9 +9,9 @@
                 <div class="col-span-12">
                     <p class="text-3xl font-extrabold mb-3">商品列表 - 所有商品</p>
                     <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
-                    <ul class="p-2 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
+                    <ul class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                         @foreach ($products as $product)
-                            <li class="flex flex-col justify-between p-5 box-border shadow rounded hover:shadow-md">
+                            <li class="flex flex-col justify-between p-5 box-border rounded hover:shadow-md">
                                 <div>
                                     <a href="{{ route('product.show',['product'=> $product->id]) }}">
                                         <img class="h-full w-full" src="{{ asset($product->product_imgsrc1) }}" alt="">
@@ -28,12 +28,10 @@
                         @endforeach
                     </ul>
                     <!-- 分頁頁碼 -->
-                    {{ $products->links() }}
+                    <div class="py-3">
+                        {{ $products->links() }}
+                    </div>
                 </div>
             </div>
     </div>
-    @foreach ($products as $product)
-    <livewire:product :product="$product">
-    @endforeach
-    @livewireScripts
 </x-layout>
