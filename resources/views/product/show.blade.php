@@ -59,12 +59,12 @@
                         <br>
 
                         @if( $product -> product_price == 0 )
-                            <h3 class="text-xl py-3">定價: 來電詢價 </h3>
+                            <h3 class="text-xl py-3 ">定價: <span class="text-4xl text-red-600">來電詢價</span> </h3>
                         @else
                             <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
                             <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
                         @endif
-                        <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
+                        <!-- <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button> -->
                     </div>
                 </div>
             </div>

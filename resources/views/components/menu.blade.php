@@ -1,5 +1,4 @@
 <div class="hidden md:block">
-    <p class="text-xl font-extrabold mb-3">目錄類別</p>
     <ul class="mb-5">
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=書寫筆')}}">🖊️#書寫筆</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=修正文具')}}">📝#修正文具</a></li>
