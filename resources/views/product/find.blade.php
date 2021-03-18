@@ -45,7 +45,7 @@
                 @else
                 <ul class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                     @foreach ($products as $product)
-                        <li class="flex flex-col p-5 box-border shadow rounded hover:shadow-md">
+                        <li class="flex flex-col p-5 box-border rounded hover:shadow-md">
                             <div class="">
                                 <a href="{{ route('product.show',['product'=> $product->id]) }}">
                                     <img class="h-full w-full" src="{{ $product->product_imgsrc1 }}" alt="">

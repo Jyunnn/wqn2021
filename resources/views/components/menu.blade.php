@@ -21,5 +21,6 @@
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=五金百貨')}}">🛠️#五金百貨</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=清潔用品')}}">🧹#清潔用品</a></li>
         <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=辦公茶水')}}">🥤#辦公茶水</a></li>
+        <li class="p-2 my-1 inline-block border"><a href="{{asset('/type?keyword=設計印刷')}}">✒️#設計印刷</a></li>
     </ul>
 </div>

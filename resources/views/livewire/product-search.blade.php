@@ -22,6 +22,7 @@
             <option value="五金百貨">五金百貨</option>
             <option value="清潔用品">清潔用品</option>
             <option value="辦公茶水">辦公茶水</option>
+            <option value="設計印刷">設計印刷</option>
         </select>
         <p>搜尋內容 ：</p>
         <input name="keyword" class="border-0" type="text" wire:model.debounce.1000ms="searchtext" placeholder="請輸入搜尋項目">

@@ -44,6 +44,7 @@
                             <option value="五金百貨">五金百貨</option>
                             <option value="清潔用品">清潔用品</option>
                             <option value="辦公茶水">辦公茶水</option>
+                            <option value="設計印刷">設計印刷</option>
                         </select>
                         <p class="text-xs text-red-600">(最好要有分類的建檔)</p>
                     </div>

@@ -35,6 +35,7 @@
                     <option value="五金百貨" {{ $product -> product_type == '五金百貨' ? 'selected' : ''}}>五金百貨</option>
                     <option value="清潔用品" {{ $product -> product_type == '清潔用品' ? 'selected' : ''}}>清潔用品</option>
                     <option value="辦公茶水" {{ $product -> product_type == '辦公茶水' ? 'selected' : ''}}>辦公茶水</option>
+                    <option value="設計印刷" {{ $product -> product_type == '設計印刷' ? 'selected' : ''}}>設計印刷</option>
                 </select>
                 <p class="text-xs text-red-600">(最好要有分類的建檔)</p>
             </div>

@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(10);
         return view('product.index', ['products'=> $products]);
     }
 
@@ -45,7 +45,7 @@ class ProductController extends Controller
     {
         $type = $request->query()["type"];
         $keyword = $request->query()["keyword"];
-        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(5);
+        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(10);
         return view('product.find', ['products' => $products , 'type' => $type , 'keyword' => $keyword]);
     }
 }

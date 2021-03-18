@@ -57,7 +57,6 @@
                             @endif
                         </div>
                         <br>
-                        <!-- <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div> -->
 
                         @if( $product -> product_price == 0 )
                             <h3 class="text-xl py-3">定價: 來電詢價 </h3>
@@ -80,8 +79,7 @@
         </div>   
         
     </div>
-    
-    <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
+
     <script>
         let cart_submit = document.getElementById('product_cart_submit');
         let product_id = "{{ $product -> id }}";
