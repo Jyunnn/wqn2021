@@ -27,7 +27,7 @@
     <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
 
     @if(!$Stationery || $Stationery == "none")
-    <div class="text-4xl py-56 text-center">
+    <div class="text-4xl py-44 text-center">
         <p>請在上方選單選擇目錄</p>
         <div class="text-sm mt-5">
             <p class="text-sm">此目錄為新東利製作權所有</p>

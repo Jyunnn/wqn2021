@@ -77,14 +77,29 @@
 
         </div>
 
-        <div class="bg-red-400 py-12 md:py-20" style=" background: url( {{ asset('images/wqn_bg.png') }} ) no-repeat center center / 100%">
-            <div class="max-w-7xl mx-auto" style="background: rgba(255,255,255,0.7) ;">
+        <div class="bg-red-400 py-12" style=" background: url( {{ asset('images/wqn_bg.png') }} ) no-repeat center center / 100%">
+            <div class="max-w-7xl mx-auto py-3 hidden md:block" style="background: rgba(255,255,255,0.7) ;">
                 <p class="text-4xl font-black py-1 text-center"> 關於文光行 </p>
                 <br>
                 <p class="text-center py-1">
-                    成立於民國52年，新竹地區文具批發商之一，全台皆在服務範圍內，以誠信經營、服務客戶為目的，販賣項目由文具
+                    成立於民國52年，新竹地區文具批發商之一，全台皆在服務範圍內，以誠信經營、服務客戶為目的，販賣項目從文具五金到日常用品應有盡有
+                </p>
+                <p class="text-center py-1">
+                    企業桃竹苗都可送貨，可配合月結，歡迎來電詢問
                 </p>
             </div>
         </div>
+
+        <div class="max-w-7xl mx-auto py-3 bg-gray-100 md:hidden">
+                <p class="text-4xl font-black py-1 text-center"> 關於文光行 </p>
+                <br>
+                <p class="text-center py-1">
+                    成立於民國52年，新竹地區文具批發商之一，全台皆在服務範圍內，以誠信經營、服務客戶為目的，販賣項目從文具五金到日常用品應有盡有
+                </p>
+                <p class="text-center py-1">
+                    企業桃竹苗都可送貨，可配合月結，歡迎來電詢問
+                </p>
+        </div>
+
         <script src="{{ asset('js/swiper.js') }}"></script>
 </x-layout>

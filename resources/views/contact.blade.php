@@ -7,6 +7,7 @@
         <p class="text-3xl font-extrabold mb-3">聯繫我們</p>
         <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
         <div class="py-5">
+            <p>目前連繫功能尚未完成</p>
             <p>您可以使用這個表單與我們聯繫</p>
             <p>您的反應將會寄送到我們的電子信箱，我們收到您的反應會立即回覆您</p>
         </div>
