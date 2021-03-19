@@ -43,7 +43,7 @@
                     <textarea class="rounded-md w-full" name="customer_content" cols="50" rows="10"></textarea>
                 </div>
 
-                <button type="submit" class="py-2 px-3 border-2 rounded-md">送出</button>
+                <!-- <button type="submit" class="py-2 px-3 border-2 rounded-md">送出</button> -->
             </form>
         </div>
     </div>

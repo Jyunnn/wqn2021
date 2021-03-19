@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/pdfmenu', function () {
+    return view('pdfmenu');
+})->name('pdfmenu');
+
 Route::get('/find',[ProductController::class, 'find'])->name('product.find');
 Route::get('/type',[ProductController::class, 'type'])->name('product.type');
 Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('auth')->name('dashboard.list');
@@ -30,9 +38,6 @@ Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('
 Route::resource('product', ProductController::class)->only(['index','show']);
 Route::resource('dashboard', DashboardController::class)->middleware('auth')->except('show');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
