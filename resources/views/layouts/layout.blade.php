@@ -46,15 +46,9 @@
                 <a class="block px-4" href="/">首頁</a>|
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>|
                 <a class="block px-4" href="{{ route('contact') }}">聯繫我們</a>|
-                <a class="block px-4" href="">店面位置</a>|
+                <a class="block px-4" href="">店面位置</a>
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
-                    @else
-                    <a href="{{ route('login') }}" class="block px-4">管理員登入</a>
-
-                    <!-- @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-gray-700">註冊</a>
-                    @endif -->
+                |<a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
                 @endauth
             </div>
             <div>

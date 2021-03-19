@@ -30,6 +30,8 @@
     <div class="text-4xl py-44 text-center">
         <p>請在上方選單選擇目錄</p>
         <div class="text-sm mt-5">
+            <p class="py-5">首次載入時間可能較久，請耐心等候</p>
+
             <p class="text-sm">此目錄為新東利製作權所有</p>
             <p>- 翻印必究 -</p>
             <p class="text-4xl py-5">⛔</p>

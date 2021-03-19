@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">
-        Index
+        首頁
     </x-slot>
 
     <div class="bg-yellow-300 max-w-full hidden sm:block">

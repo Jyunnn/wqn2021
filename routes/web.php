@@ -38,9 +38,14 @@ Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('
 Route::resource('product', ProductController::class)->only(['index','show']);
 Route::resource('dashboard', DashboardController::class)->middleware('auth')->except('show');
 
+Route::get('/storage', function () {
+    Artisan::call('storage:link');
+    dd("storage:link Done");
+});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/clear', function () {
+    Artisan::call('cache:clear');
+    dd("cache:clear Done");
+});
 
 require __DIR__.'/auth.php';
