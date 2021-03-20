@@ -76,7 +76,7 @@
 
         </div>
 
-        <div class="bg-red-400 py-12" style=" background: url( {{ asset('images/wqn_bg.png') }} ) no-repeat center center / 100%">
+        <div class="bg-red-400 py-12" style=" background: url( {{ asset('images/wqn_bg.jpg') }} ) no-repeat center center / 100%">
             <div class="max-w-7xl mx-auto py-3 hidden md:block" style="background: rgba(255,255,255,0.7) ;">
                 <p class="text-4xl font-black py-1 text-center"> 關於文光行 </p>
                 <br>
