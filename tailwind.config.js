@@ -22,6 +22,8 @@ module.exports = {
     variants: {
         extend: {
             opacity: ['disabled'],
+            borderWidth: ['hover'],
+            borderColor: ['hover'],
         },
     },
 
