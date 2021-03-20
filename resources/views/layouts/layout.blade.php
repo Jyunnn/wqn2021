@@ -8,7 +8,7 @@
     <meta name="description" content="文光行,傳基實業有限公司,文具批發,辦公家具,印刷設計,文具用品批發,各式品牌書寫用品,黏貼包裝材料,桌上五金用品,檔案收納資料整理,辦公紙品便條紙,圖畫紙工業用紙,事務機器電腦耗材,茶水招待,商品最齊全的文具供應商">
     <meta property="facebook:title" content="新竹文光行">
     <meta name="facebook:description" content="文光行,傳基實業有限公司,文具批發,辦公家具,印刷設計,文具用品批發,各式品牌書寫用品,黏貼包裝材料,桌上五金用品,檔案收納資料整理,辦公紙品便條紙,圖畫紙工業用紙,事務機器電腦耗材,茶水招待,商品最齊全的文具供應商">
-    <meta name="author" content="Jyunnn">
+    <meta name="author" content="Jyun Wei">
     <title>{{ config('app.name') }} - {{ $title }}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
