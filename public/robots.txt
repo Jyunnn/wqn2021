@@ -1,2 +1,7 @@
+# robots.txt for wqn
+
 User-agent: *
-Disallow:
+Disallow: /*/login
+Disallow: /*/product/*
+Disallow: *.png$
+Disallow: *.jpg$
