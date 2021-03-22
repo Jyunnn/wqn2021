@@ -20,7 +20,7 @@
     </div>
 
 
-        <div class="max-w-7xl flex mx-auto py-4 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
+        <div class="max-w-7xl flex mx-auto py-4 px-3 sm:px-0 grid md:grid-cols-4 sm:grid-cols-2 gap-4 ">
 
             <div class="">
                 <div>

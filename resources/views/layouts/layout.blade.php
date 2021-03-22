@@ -33,8 +33,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
-<body>
-    <nav class="items-top justify-center shadow dark:bg-gray-900 sm:items-center sm:pt-0">
+<body class="relative mb-8 sm:m-0">
+    <nav class="items-top justify-center shadow dark:bg-gray-900 hidden sm:block sm:pt-0">
         <div class="max-w-7xl mx-auto flex items-center">
             <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
             <div class="mx-5">
@@ -54,7 +54,32 @@
             </div>
         </div>
     </nav>
+
+    <nav class="sm:hidden w-full fixed flex justify-center items-center bottom-0 bg-white shadow-inner">
+        <div class="absolute left-0 bg-white h-16 w-16 border-white rounded-full flex justify-center items-center" style="bottom: 1px">
+            <img class="w-12" src="{{ asset('images/favicon.png') }}" alt="">
+        </div>
+        <div class="mx-5">
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/">首頁</a>
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}">商品</a>
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('pdfmenu') }}">目錄</a>
+        </div>
+    </nav>
     
+    <div class="sm:hidden w-full p-5">
+        <img class="block m-auto" src="{{ asset('images/wqn_logo.png') }}" alt="">
+        <form action="{{ route('product.find') }}" method="get">
+            <select class="w-full mb-2" name="type" id="">
+                <option value="product_name">商品名稱</option>
+                <option value="product_dm_number">目錄編號</option>
+            </select>
+            <div style="font-size: 0px">
+                <input name="keyword" class="border-0 box-border w-9/12" type="text" placeholder="請輸入搜尋項目">
+                <button class="p-2 box-border hover:bg-yellow-300 text-base w-3/12" type="submit">搜尋</button>
+            </div>
+        </form>
+    </div>
+
     <div class="">
         {{ $slot }}
     </div>
