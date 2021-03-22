@@ -140,5 +140,11 @@
                 .catch( error => {
                         console.error( error );
                 } );
+
+        CKEDITOR.replace('editor', {
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+        
     </script>
 </x-app-layout>
