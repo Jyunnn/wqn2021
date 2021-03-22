@@ -3,8 +3,11 @@ import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.css';
 
 var swiper = new Swiper('.swiper-container', {
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    },
+    autoplay: {
+      delay: 5000,
     },
 });
