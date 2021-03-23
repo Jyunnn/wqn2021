@@ -3,7 +3,7 @@
         商品頁面
     </x-slot>
 
-    <div class="py-8 px-3 sm:px-0 max-w-7xl mx-auto">
+    <div class="py-8 max-w-7xl mx-auto">
         <div>
             <x-menu />
 

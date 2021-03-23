@@ -18,7 +18,7 @@ class ImageController extends Controller
     
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('storage/'.$fileName); 
-            $msg = 'Image uploaded successfully'; 
+            $msg = '圖片上傳成功,回到影像資訊修改適合寬度即可'; 
             $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
                 
             @header('Content-type: text/html; charset=utf-8'); 

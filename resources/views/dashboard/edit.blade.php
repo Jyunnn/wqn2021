@@ -55,7 +55,7 @@
 
             <div class="py-2">
                 <label for="product_imgsrc">
-                    上傳圖片1: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
+                    上傳主要圖片: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
                 </label>
                 <p class="text-xs text-red-600">(必要,將置於主圖,建議450*450)</p>
                 <img class="w-56 h-56" id="preview_product_imgsrc" src="{{asset( $product -> product_imgsrc1 )}}" alt="">
@@ -79,26 +79,6 @@
                     reader.readAsDataURL(input.files[0])
                 }
             </script>
-
-            <div class="py-2">
-                <label for="product_imgsrc">
-                    上傳圖片2: <input type="file" name="product_imgsrc2" id="product_imgsrc">
-                </label>
-                <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
-                @if ($product -> product_imgsrc2)
-                    <img class="w-100 h-100" src="{{asset( $product -> product_imgsrc2 )}}" alt="">
-                @endif
-            </div>
-
-            <div class="py-2">
-                <label for="product_imgsrc">
-                    上傳圖片3: <input type="file" name="product_imgsrc3" id="product_imgsrc">
-                </label>
-                <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
-                @if ($product -> product_imgsrc3)
-                    <img class="w-100 h-100" src="{{asset( $product -> product_imgsrc3 )}}" alt="">
-                @endif
-            </div>
 
             <div class="py-2">
                 <label for="product_attr">商品屬性</label>

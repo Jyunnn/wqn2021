@@ -3,7 +3,7 @@
     {{ $product -> product_name }}
     </x-slot>
     
-    <div class="py-8 px-3 sm:px-0 max-w-7xl mx-auto">
+    <div class="py-8 max-w-7xl mx-auto">
         <div>
             <x-menu />
             <div class="h-0.5 mb-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
@@ -11,37 +11,14 @@
 
         <div>
             <div class="flex grid grid-cols-1 p-2 md:p-0 md:grid-cols-2 md:gap-4">
-                <div class="flex flex-col md:flex-row items-center p-5 border">
-                    <div class="w-320 h-320 sm:w-450 xl:h-450">
-                        <img class="mySlides w-full" src="{{ asset($product -> product_imgsrc1) }}">
-                        @if($product -> product_imgsrc2)
-                            <img class="mySlides" src="{{ asset($product -> product_imgsrc2) }}" style="display:none">
-                        @endif
-                        @if($product -> product_imgsrc3)
-                            <img class="mySlides" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;display:none">
-                        @endif
-                    </div>
-                    <div>
-                        <div class="flex flex-row md:flex-col">
-                            <div class="w-100 h-100">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc1) }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
-                            </div>
-                            @if($product -> product_imgsrc2)
-                            <div class="w-100 h-100">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc2) }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
-                            </div>
-                            @endif
-                            @if($product -> product_imgsrc2)
-                            <div class="w-100 h-100">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="{{ asset($product -> product_imgsrc3) }}" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
-                            </div>
-                            @endif
-                        </div>
+                <div class="p-5 border">
+                    <div class="">
+                        <img class="mySlides" src="{{ asset($product -> product_imgsrc1) }}">
                     </div>
                 </div>
                 <div>
                     <div>
-                        <h2 class="text-3xl pb-8">{{ $product -> product_name }}</h2>
+                        <h2 class="text-3xl pb-8 pt-3 md:pt-0">{{ $product -> product_name }}</h2>
                         <h3> 商品分類 > {{ $product -> product_type}} </h3>
                         <h3> 目錄編號： {{ $product -> product_dm_number}} </h3>
                     </div>

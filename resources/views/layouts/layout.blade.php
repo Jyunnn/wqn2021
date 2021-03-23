@@ -30,13 +30,22 @@
     <title>{{ config('app.name') }} - {{ $title }}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <style>
+        #mobilebar_handle:checked+#mobilebar {
+            margin-left: 0rem;
+        }
+    </style>
 </head>
 <body class="relative mb-8 sm:m-0">
-    <nav class="items-top justify-center shadow dark:bg-gray-900 hidden sm:block sm:pt-0">
+    <!--桌面模式nav-->
+    <nav class="items-top justify-center shadow dark:bg-gray-900 hidden lg:block sm:pt-0">
         <div class="max-w-7xl mx-auto flex items-center">
-            <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
+            <a href="/">
+                <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
+            </a>
             <div class="mx-5">
                 <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/">首頁</a>
                 <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}">商品</a>
@@ -54,33 +63,68 @@
             </div>
         </div>
     </nav>
-
-    <nav class="sm:hidden w-full fixed flex justify-center items-center bottom-0 bg-white shadow-inner">
+    <!--桌面模式nav結束-->
+    <!--手機模式nav-->
+    <nav class="lg:hidden w-full fixed flex justify-center items-center bottom-0 bg-white shadow-inner z-50">
         <div class="absolute left-0 bg-white h-16 w-16 border-white rounded-full flex justify-center items-center" style="bottom: 1px">
+        <a href="/">
             <img class="w-12" src="{{ asset('images/favicon.png') }}" alt="">
+        </a>
         </div>
         <div class="mx-5">
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/">首頁</a>
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}">商品</a>
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('pdfmenu') }}">目錄</a>
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/"><i class="lni lni-home"></i>首頁</a>
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}"><i class="lni lni-ruler-pencil"></i>商品</a>
+            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('pdfmenu') }}"><i class="lni lni-book"></i>目錄</a>
         </div>
     </nav>
     
-    <div class="sm:hidden w-full p-5">
-        <img class="block m-auto" src="{{ asset('images/wqn_logo.png') }}" alt="">
+    <div class="lg:hidden w-full p-5">
+        <a href="/">
+            <img class="block m-auto mb-5" src="{{ asset('images/wqn_logo.png') }}" alt="">
+        </a>
         <form action="{{ route('product.find') }}" method="get">
             <select class="w-full mb-2" name="type" id="">
-                <option value="product_name">商品名稱</option>
-                <option value="product_dm_number">目錄編號</option>
+                <option value="product_name">依商品名稱搜尋</option>
+                <option value="product_dm_number">依目錄編號搜尋</option>
             </select>
             <div style="font-size: 0px">
-                <input name="keyword" class="border-0 box-border w-9/12" type="text" placeholder="請輸入搜尋項目">
-                <button class="p-2 box-border hover:bg-yellow-300 text-base w-3/12" type="submit">搜尋</button>
+                <input name="keyword" class="border box-border w-6/12" type="text" placeholder="請輸入搜尋項目">
+                <button class="p-2 border border-yellow-300 bg-yellow-300 active:bg-yellow-600 text-base w-4/12" type="submit">搜尋</button>
             </div>
         </form>
     </div>
-
-    <div class="">
+    <!--手機模式nav結束-->
+    <!--手機模式側邊攔-->
+    <label class="hidden text-lg px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" for="mobilebar_handle" href="/"><i class="lni lni-menu"></i></label>
+    <input class="hidden" type="checkbox" id="mobilebar_handle">
+    <div class="absolute md:hidden -ml-56 top-0 bottom-0 w-56 bg-white text-center shadow z-40" id="mobilebar">
+        <p class="py-5 block text-2xl border-b">目錄選項</p>
+        <ul>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=書寫筆')}}">🖊️#書寫筆</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=修正文具')}}">📝#修正文具</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=印章墨水')}}">🖃#印章墨水</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=桌上五金')}}">🔨#桌上五金</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=包裝黏著')}}">📦#包裝黏著</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=裝訂事務')}}">📎#裝訂事務</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=度量衡')}}">📏#度量衡</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=紙製品')}}">🧾#紙製品</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=標示貼牌')}}">🚧#標示貼牌</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=檔案夾')}}">📘#檔案夾</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=檔案收納')}}">🗃️#檔案收納</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=辦公傢俱')}}">🪑#辦公傢俱</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=事務機器')}}">📠#事務機器</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=耗材紙類')}}">🌲#耗材紙類</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=電腦耗材')}}">🖱️#電腦耗材</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=美術用品')}}">🖌️#美術用品</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=運動益智用品')}}">🏟️#運動益智用品</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=五金百貨')}}">🛠️#五金百貨</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=清潔用品')}}">🧹#清潔用品</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=辦公茶水')}}">🥤#辦公茶水</a></li>
+            <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=設計印刷')}}">✒️#設計印刷</a></li>
+        </ul>
+    </div>
+    <!--手機模式側邊攔結束-->
+    <div class="px-3 sm:px-1">
         {{ $slot }}
     </div>
 
@@ -99,7 +143,7 @@
                 <p class="text-sm py-1">Email: tel5430196@gmail.com | TEL: 03-5430196、03-5428886 | FAX: 03-5349883</p>
             </div>
 
-            <p class="pt-4 text-xs text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.1)">Web Design by Jyunnn - 2021 文光行</p>
+            <p class="pt-4 text-xs text-gray-50" style="text-shadow:1px 1px rgba(0,0,0,.5)">Web Design by 2021 文光行</p>
     </footer>
 
 </body>
