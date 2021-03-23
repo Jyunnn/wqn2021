@@ -14,10 +14,10 @@ class ImageController extends Controller
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $fileName.'_'.time().'.'.$extension;
             
-            $request->file('upload')->move(public_path('images'), $fileName);
+            $request->file('upload')->move(public_path('storage'), $fileName);
     
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/'.$fileName); 
+            $url = asset('storage/'.$fileName); 
             $msg = 'Image uploaded successfully'; 
             $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
                 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('/type',[ProductController::class, 'type'])->name('product.type');
 Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('auth')->name('dashboard.list');
 Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('auth')->name('dashboard.find');
 
-Route::post('images/upload', 'ImageController@upload')->name('ckeditor.upload');
+Route::post('images/upload', [ImageController::class, 'upload'])->name('ckeditor.upload');
 
 Route::resource('product', ProductController::class)->only(['index','show']);
 Route::resource('dashboard', DashboardController::class)->middleware('auth')->except('show');
