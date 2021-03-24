@@ -44,9 +44,13 @@
                                 <!-- <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button> -->
                             </div>
                         </div>
-                        <div class="col-span-6 md:ml-8 md:p-5 border-2 border-dashed border-yellow-500">
+                        <div class="col-span-6 md:ml-8 md:p-5">
                             <p class="text-xl mb-6 font-bold">簡易說明</p>
-                            {!! htmlspecialchars_decode($product -> product_simplecontent) !!}
+                            @if(!$product -> product_simplecontent )
+                                <p>無內容</p>
+                            @else
+                                {!! htmlspecialchars_decode($product -> product_simplecontent) !!}
+                            @endif
                         </div>
                     
                     </div>

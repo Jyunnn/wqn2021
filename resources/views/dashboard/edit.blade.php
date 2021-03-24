@@ -108,6 +108,13 @@
                 <p class="text-xs text-red-600">(設定0會顯示無庫存)</p>
             </div>
 
+            <div class="my-5 text-2xl">
+                <label for="product_simplecontent">商品簡易說明</label>
+                <textarea name="product_simplecontent" id="simple_editor" value="{{ old('product_simplecontent') }}">
+                    {{  $product -> product_simplecontent  }}
+                </textarea >
+            </div>
+
             <div class="my-5">
                 <label for="product_content">商品內容</label>
                 <p class="text-xs text-red-600">(必須填寫,不然客人不知道這是啥)</p>
@@ -125,6 +132,11 @@
         CKEDITOR.replace('editor', {
             filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('simple_editor', {
+            uiColor: '#f2d298',
+            removeButtons:'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,Image',
         });
         
     </script>
