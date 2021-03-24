@@ -13,6 +13,16 @@
             @csrf
             @method('PATCH')
             <div class="py-2">
+                @if ($errors->any())
+                    <div class="text-red-600 mb-5 p-5 border border-red-600">
+                        <p class="text-xl font-bold">ERROR!! 建立內容有誤：</p>
+                        <ol>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-xs">{{ $error }}</li>
+                            @endforeach
+                        </ol>
+                    </div>
+                @endif
                 <label for="product_type">商品類別</label>
                 <select name="product_type" id="product_type">
                     <option value="書寫筆" {{ $product->product_type == '書寫筆' ? 'selected' : ''}}>書寫筆</option>

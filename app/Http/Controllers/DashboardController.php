@@ -43,14 +43,13 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_dm_number' => 'nullable|integer',
+            'product_dm_number' => 'nullable',
             'product_name' => 'required',
             'product_imgsrc1' => 'required',
             'product_price' => 'required|integer',
             'product_qty' => 'required|integer',
             'product_content' => 'required',
         ],[
-            'product_dm_number.integer' => '目錄編號必須是數字',
             'product_name.required' => '商品名稱為必填項目',
             'product_imgsrc1.required' => '"上傳主要圖片"必填選擇一張圖',
             'product_price.required' => '價錢為必填項目,且必須是數字',
@@ -77,6 +76,7 @@ class DashboardController extends Controller
             'product_attr' => $request ->input('product_attr'),
             'product_price' => $request ->input('product_price'),
             'product_qty' => $request ->input('product_qty'),
+            'product_simplecontent' =>$request ->input('product_simplecontent'),
             'product_content' => $request ->input('product_content'),
             'product_show' => 1,
         ]);
@@ -120,6 +120,20 @@ class DashboardController extends Controller
     public function update(Request $request, $id)
     {
 
+        $validator = Validator::make($request->all(), [
+            'product_dm_number' => 'nullable',
+            'product_name' => 'required',
+            'product_price' => 'required|integer',
+            'product_qty' => 'required|integer',
+            'product_content' => 'required',
+        ],[
+            'product_name.required' => '商品名稱為必填項目',
+            'product_price.required' => '價錢為必填項目,且必須是數字',
+            'product_qty.required' => '庫存為必填項目且,必須是數字',
+            'product_content.required' => '商品內容為必填項目'
+        ]);
+
+
         $file1 = $request->file('product_imgsrc1');
         if($file1) {
             $path1 = $file1->store('public');
@@ -129,17 +143,20 @@ class DashboardController extends Controller
             ]);
         }
 
+        if( $validator->fails() ){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
         DB::table('products')->where('id', $id)
         ->update(
             [
                 'product_type' => $request -> input('product_type'),
                 'product_dm_number' => $request-> input('product_dm_number'),
                 'product_name' => $request-> input('product_name'),
-                // 'product_imgsrc2' => $request->product_imgsrc2,
-                // 'product_imgsrc3' => $request->product_imgsrc3,
                 'product_attr' => $request ->input('product_attr'),
                 'product_price' => $request -> input('product_price'),
                 'product_qty' => $request-> input('product_qty'),
+                'product_simplecontent' =>$request ->input('product_simplecontent'),
                 'product_content' => $request-> input('product_content'),
             ],
         );

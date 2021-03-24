@@ -10,44 +10,51 @@
         </div>
 
         <div>
-            <div class="flex grid grid-cols-1 p-2 md:p-0 md:grid-cols-2 md:gap-4">
-                <div class="p-5 border">
+            <div class="flex grid grid-cols-1 p-2 md:p-0 md:grid-cols-12 md:gap-4">
+                <div class="p-5 border col-span-5">
                     <div class="">
-                        <img class="mySlides" src="{{ asset($product -> product_imgsrc1) }}">
+                        <img class="h-450 w-450" src="{{ asset($product -> product_imgsrc1) }}">
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <h2 class="text-3xl pb-8 pt-3 md:pt-0">{{ $product -> product_name }}</h2>
-                        <h3> 商品分類 > {{ $product -> product_type}} </h3>
-                        <h3> 目錄編號： {{ $product -> product_dm_number}} </h3>
-                    </div>
+                <div class="col-span-7">
+                    <h2 class="text-3xl mb-6 pt-3 md:pt-0">{{ $product -> product_name }}</h2>
+                    <hr>
+                    <div class="flex grid md:grid-cols-12 mt-3">
+                        <div class="col-span-6 md:p-5">
+                            <h3> 商品分類 > {{ $product -> product_type}} </h3>
+                            <h3> 目錄編號： {{ $product -> product_dm_number}} </h3>
+                            <div class="py-3">
+                            <div>
+                                @if($product -> product_attr)
+                                    <h3 class="text-xl"> 商品屬性：</h3>
+                                    @foreach( explode(",", $product -> product_attr) as $attr)
+                                        <input type="radio" value="{{ $attr }}" name="attr">
+                                        <label>{{ $attr }}</label>
+                                    @endforeach
+                                @endif
+                                </div>
+                                <br>
 
-                    <div class="py-3">
-                        <div>
-                            @if($product -> product_attr)
-                                <h3 class="text-xl"> 商品屬性：</h3>
-                                @foreach( explode(",",$product -> product_attr) as $attr)
-                                    <input type="radio" value="{{ $attr }}" name="attr">
-                                    <label>{{ $attr }}</label>
-                                @endforeach
-                            @endif
+                                @if( $product -> product_price == 0 )
+                                    <h3 class="text-xl py-3 ">定價: <span class="text-3xl text-red-500">來電詢價</span> </h3>
+                                @else
+                                    <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
+                                    <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
+                                @endif
+                                <!-- <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button> -->
+                            </div>
                         </div>
-                        <br>
-
-                        @if( $product -> product_price == 0 )
-                            <h3 class="text-xl py-3 ">定價: <span class="text-4xl text-red-600">來電詢價</span> </h3>
-                        @else
-                            <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
-                            <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
-                        @endif
-                        <!-- <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button> -->
+                        <div class="col-span-6 md:ml-8 md:p-5 border-2 border-dashed border-yellow-500">
+                            <p class="text-xl mb-6 font-bold">簡易說明</p>
+                            {!! htmlspecialchars_decode($product -> product_simplecontent) !!}
+                        </div>
+                    
                     </div>
                 </div>
             </div>
             <div class="h-0.5 my-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500"></div>
-            <div>
-                <h2 class="text-3xl mb-3">商品說明</h2>
+            <div class="p-2 md:p-0">
+                <h2 class="text-2xl font-bold mb-3">商品說明</h2>
                 <hr class="mb-3">
                 <div>
                     {!! htmlspecialchars_decode($product -> product_content) !!}
@@ -88,26 +95,6 @@
                     addProductToCart(product_id ,cart_input.value)
                 }
             })
-        }
-
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " w3-opacity-off";
         }
     </script>
 </x-layout>
