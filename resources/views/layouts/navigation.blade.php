@@ -21,12 +21,6 @@
                     <x-nav-link :href="route('dashboard.list')" :active="request()->routeIs('dashboard.list')">
                         {{ __('商品列表') }}
                     </x-nav-link>
-                    <x-nav-link>
-                        {{ __('未報價(待新增)') }}
-                    </x-nav-link>
-                    <x-nav-link>
-                        {{ __('已報價(待新增)') }}
-                    </x-nav-link>
                 </div>
             </div>
 

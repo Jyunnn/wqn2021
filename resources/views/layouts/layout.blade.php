@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body class="relative mb-8 sm:m-0">
+<body class="relative mb-12 md:mb-20 lg:m-0">
     <!--桌面模式nav-->
     <nav class="items-top justify-center shadow dark:bg-gray-900 hidden lg:block sm:pt-0">
         <div class="max-w-7xl mx-auto flex items-center">
@@ -65,20 +65,22 @@
     </nav>
     <!--桌面模式nav結束-->
     <!--手機模式nav-->
-    <nav class="lg:hidden w-full fixed flex justify-center items-center bottom-0 bg-white shadow-inner z-50">
-        <div class="absolute left-0 bg-white h-16 w-16 border-white rounded-full flex justify-center items-center" style="bottom: 1px">
-        <a href="/">
-            <img class="w-12" src="{{ asset('images/favicon.png') }}" alt="">
-        </a>
-        </div>
-        <div class="mx-5">
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/"><i class="lni lni-home"></i>首頁</a>
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}"><i class="lni lni-ruler-pencil"></i>商品</a>
-            <a class="px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('pdfmenu') }}"><i class="lni lni-book"></i>目錄</a>
-        </div>
+    <nav class="lg:hidden py-3 w-full fixed flex justify-around items-center bottom-0 rounded-t-lg bg-yellow-500 text-gray-600 shadow-inner z-50">
+            <a class="px-5 inline-block flex flex-col justify-center items-center" href="/">
+                <i class="lni lni-home"></i>
+                <p class="font-bold">首頁</p>
+            </a>
+            <a class="px-5 inline-block flex flex-col justify-center items-center" href="{{ route('product.index') }}">
+                <i class="lni lni-ruler-pencil"></i>
+                <p class="font-bold">商品</p>
+            </a>
+            <a class="px-5 inline-block flex flex-col justify-center items-center" href="{{ route('pdfmenu') }}">
+                <i class="lni lni-book"></i>
+                <p class="font-bold">目錄</p>
+            </a>
     </nav>
     
-    <div class="lg:hidden w-full p-5">
+    <div class="lg:hidden w-full p-1">
         <a href="/">
             <img class="block m-auto mb-5" src="{{ asset('images/wqn_logo.png') }}" alt="">
         </a>
@@ -88,7 +90,7 @@
                 <option value="product_dm_number">依目錄編號搜尋</option>
             </select>
             <div style="font-size: 0px">
-                <input name="keyword" class="border box-border w-6/12" type="text" placeholder="請輸入搜尋項目">
+                <input name="keyword" class="border box-border w-8/12" type="text" placeholder="請輸入搜尋項目">
                 <button class="p-2 border border-yellow-300 bg-yellow-300 active:bg-yellow-600 text-base w-4/12" type="submit">搜尋</button>
             </div>
         </form>
@@ -124,7 +126,7 @@
         </ul>
     </div>
     <!--手機模式側邊攔結束-->
-    <div class="px-3 sm:px-1">
+    <div class="p-1">
         {{ $slot }}
     </div>
 

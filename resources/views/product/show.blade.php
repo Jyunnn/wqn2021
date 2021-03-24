@@ -12,12 +12,12 @@
         <div>
             <div class="flex grid grid-cols-1 p-2 md:p-0 md:grid-cols-12 md:gap-4">
                 <div class="p-5 border col-span-5">
-                    <div class="">
-                        <img class="h-450 w-450" src="{{ asset($product -> product_imgsrc1) }}">
+                    <div class="flex justify-center items-center">
+                        <img class="h-300 w-300 sm:h-450 sm:w-450" src="{{ asset($product -> product_imgsrc1) }}">
                     </div>
                 </div>
                 <div class="col-span-7">
-                    <h2 class="text-3xl mb-6 pt-3 md:pt-0">{{ $product -> product_name }}</h2>
+                    <h2 class="text-4xl font-black mb-3 pt-3 md:p-5 md:pt-0">{{ $product -> product_name }}</h2>
                     <hr>
                     <div class="flex grid md:grid-cols-12 mt-3">
                         <div class="col-span-6 md:p-5">
