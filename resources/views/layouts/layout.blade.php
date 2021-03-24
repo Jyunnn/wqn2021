@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body class="relative mb-12 md:mb-20 lg:m-0">
+<body class="relative mb-12 md:mb-12 lg:m-0">
     <!--桌面模式nav-->
     <nav class="items-top justify-center shadow dark:bg-gray-900 hidden lg:block sm:pt-0">
         <div class="max-w-7xl mx-auto flex items-center">
@@ -65,18 +65,18 @@
     </nav>
     <!--桌面模式nav結束-->
     <!--手機模式nav-->
-    <nav class="lg:hidden py-3 w-full fixed flex justify-around items-center bottom-0 rounded-t-lg bg-yellow-500 text-gray-600 shadow-inner z-50">
+    <nav class="lg:hidden py-2 w-full fixed flex justify-around items-center bottom-0 rounded-t-lg bg-yellow-500 text-white shadow-inner z-50">
             <a class="px-5 inline-block flex flex-col justify-center items-center" href="/">
                 <i class="lni lni-home"></i>
-                <p class="font-bold">首頁</p>
+                <p class="">首頁</p>
             </a>
             <a class="px-5 inline-block flex flex-col justify-center items-center" href="{{ route('product.index') }}">
                 <i class="lni lni-ruler-pencil"></i>
-                <p class="font-bold">商品</p>
+                <p class="">商品</p>
             </a>
             <a class="px-5 inline-block flex flex-col justify-center items-center" href="{{ route('pdfmenu') }}">
                 <i class="lni lni-book"></i>
-                <p class="font-bold">目錄</p>
+                <p class="">目錄</p>
             </a>
     </nav>
     
@@ -126,12 +126,12 @@
         </ul>
     </div>
     <!--手機模式側邊攔結束-->
-    <div class="p-1">
+    <div class="px-1 lg:p-0">
         {{ $slot }}
     </div>
 
     <footer class="max-w-7xl mx-auto py-4 text-center">
-            <div class="flex justify-center py-2">
+            <div class="flex justify-center py-2 text-sm md:text-base">
                 <a class="block px-4" href="/">首頁</a>|
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>|
                 <a class="block px-4" href="{{ route('contact') }}">聯繫我們</a>|
