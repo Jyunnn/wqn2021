@@ -66,7 +66,9 @@
                             上傳主要圖片: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
                         </label>
                         <p class="text-xs text-red-600">(必要,將置於主圖,建議450*450)</p>
-                        <img id="preview_product_imgsrc">
+                        <div class="flex items-center w-56 h-56">
+                            <img id="preview_product_imgsrc" src="{{ asset('images/img_upload.jpg')}}">
+                        </div>
                     </div>
 
                     <script>
@@ -82,7 +84,6 @@
                                 let img = document.querySelector('#'+imgId);
                                 img.setAttribute('src', e.target.result)
                                 img.setAttribute('alt', e.target.result)
-                                img.setAttribute('class', "w-56 h-56")
                             }
                             reader.readAsDataURL(input.files[0])
                         }
