@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::inRandomOrder()->paginate(10);
         return view('product.index', ['products'=> $products]);
     }
 
@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function type(Request $request)
     {
         $keyword = $request->query()["keyword"];
-        $products = Product::where('product_type', $keyword)->paginate(10);
+        $products = Product::where('product_type', $keyword)->inRandomOrder()->paginate(10);
         return view('product.type', ['products' => $products, 'keyword' => $keyword]);
     }
 
