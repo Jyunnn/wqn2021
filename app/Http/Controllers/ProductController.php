@@ -45,7 +45,7 @@ class ProductController extends Controller
     {
         $type = $request->query()["type"];
         $keyword = $request->query()["keyword"];
-        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(10);
+        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(2)->withQueryString();
         return view('product.find', ['products' => $products , 'type' => $type , 'keyword' => $keyword]);
     }
 }
