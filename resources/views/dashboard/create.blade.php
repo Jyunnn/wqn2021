@@ -110,13 +110,17 @@
 
                     <div class="my-5 text-2xl">
                         <label for="product_simplecontent">商品簡易說明</label>
-                        <textarea name="product_simplecontent" id="simple_editor" value="{{ old('product_simplecontent') }}"></textarea >
+                        <textarea name="product_simplecontent" id="simple_editor">
+                            {{ old('product_simplecontent') }}
+                        </textarea >
                     </div>
 
                     <div class="my-5 text-2xl">
                         <label for="product_content">商品內容</label>
                         <p class="text-xs text-red-600">(必須填寫,不然客人不知道這是啥)</p>
-                        <textarea name="product_content" id="editor" value="{{ old('product_content') }}">&lt;p&gt;輸入商品內容&lt;/p&gt;</textarea >
+                        <textarea name="product_content" id="editor">
+                            {{ old('product_content') }}
+                        </textarea >
                     </div>
 
                     <div class="my-5">
