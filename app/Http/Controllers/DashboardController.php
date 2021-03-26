@@ -85,17 +85,6 @@ class DashboardController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -103,10 +92,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        if(is_null($product)){
-            abort(404);
-        };
+        $product = Product::findOrFail($id);
         return view('dashboard.edit', ['product' => $product]);
     }
 
@@ -132,7 +118,6 @@ class DashboardController extends Controller
             'product_qty.required' => '庫存為必填項目且,必須是數字',
             'product_content.required' => '商品內容為必填項目'
         ]);
-
 
         $file1 = $request->file('product_imgsrc1');
         if($file1) {
@@ -177,6 +162,12 @@ class DashboardController extends Controller
         if(is_null($product)){
             return redirect()->route('dashboard.index');
         };
+        $diskName = "public";
+        $disk = Storage::disk($diskName);
+        if( $disk->exists($product->product_imgsrc1)){
+            $disk->delete($product->product_imgsrc1);
+        };
+
         $product->delete();
         return redirect()->route('dashboard.list');
     }

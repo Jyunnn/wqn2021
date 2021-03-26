@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::inRandomOrder()->paginate(10);
+        $products = Product::inRandomOrder()->paginate(2);
         return view('product.index', ['products'=> $products]);
     }
 
@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view('product.show', ['product' => $product]);
     }
 

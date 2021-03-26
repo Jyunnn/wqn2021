@@ -1,4 +1,4 @@
-<div class="py-8 sm:px-0 max-w-7xl mx-auto">
+<div class="pb-8 sm:px-0 max-w-7xl mx-auto">
     <div class="mb-5">
         <select class="w-full mb-5" id="pdfmenu" name="pdfmenu" wire:model="Stationery">
             <option value="none">請選擇目錄</option>
@@ -30,7 +30,10 @@
     <div class="text-4xl py-44 text-center">
         <p>請在上方選單選擇目錄</p>
         <div class="text-sm mt-5">
-            <p class="py-5">首次載入時間可能較久，請耐心等候</p>
+            <div class="py-5">
+                <p>因檔案較大，首次載入時間可能較久，請耐心等候</p>
+                <p>如果您的網路有流量限制請勿選取目錄以免流量暴增</p>
+            </div>
 
             <p class="text-sm">此目錄為新東利製作權所有</p>
             <p>- 翻印必究 -</p>

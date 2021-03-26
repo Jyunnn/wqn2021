@@ -65,7 +65,8 @@
     </nav>
     <!--桌面模式nav結束-->
     <!--手機模式nav-->
-    <nav class="lg:hidden py-2 w-full fixed flex justify-around items-center bottom-0 rounded-t-lg bg-yellow-500 text-white shadow-inner z-50">
+    <nav class="lg:hidden py-2 w-full fixed flex justify-around items-center bottom-0 bg-yellow-500 text-white shadow-inner z-50">
+    <label class=" text-lg px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" for="mobilebar_handle" href="/"><i class="lni lni-menu"></i></label>
             <a class="px-5 inline-block flex flex-col justify-center items-center" href="/">
                 <i class="lni lni-home"></i>
                 <p class="">首頁</p>
@@ -82,7 +83,7 @@
     
     <div class="lg:hidden w-full p-1">
         <a href="/">
-            <img class="block m-auto mb-5" src="{{ asset('images/wqn_logo.png') }}" alt="">
+            <img class="block m-auto mb-5 w-56" src="{{ asset('images/wqn_logo.png') }}" alt="">
         </a>
         <form action="{{ route('product.find') }}" method="get">
             <select class="w-full mb-2" name="type" id="">
@@ -95,12 +96,12 @@
             </div>
         </form>
     </div>
+    
     <!--手機模式nav結束-->
     <!--手機模式側邊攔-->
-    <label class="hidden text-lg px-5 py-2 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" for="mobilebar_handle" href="/"><i class="lni lni-menu"></i></label>
     <input class="hidden" type="checkbox" id="mobilebar_handle">
-    <div class="absolute md:hidden -ml-56 top-0 bottom-0 w-56 bg-white text-center shadow z-40" id="mobilebar">
-        <p class="py-5 block text-2xl border-b">目錄選項</p>
+    <div class="fixed pb-16 lg:hidden -ml-56 top-0 bottom-0 w-56 bg-white text-center overflow-scroll shadow-2xl duration-500 z-40" id="mobilebar">
+        <p class="py-5 block text-2xl border-b">商品分類</p>
         <ul>
             <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=書寫筆')}}">🖊️#書寫筆</a></li>
             <li class="p-2 my-1 block border-b"><a href="{{asset('/type?keyword=修正文具')}}">📝#修正文具</a></li>
