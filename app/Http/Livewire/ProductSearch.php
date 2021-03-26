@@ -15,7 +15,7 @@ class ProductSearch extends Component
     {
         $keyword = '%'.$this->searchtext.'%';
         return view('livewire.product-search',[
-            'products' => Product::where('product_name','LIKE', $keyword)->where('product_type','LIKE', $this->selecttype)->paginate(5),
+            'products' => Product::where('product_name','LIKE', $keyword)->where('product_type','LIKE', $this->selecttype)->paginate(20),
         ]);
     }
 }

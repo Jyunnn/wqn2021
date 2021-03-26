@@ -12,9 +12,9 @@
                     <ul class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3">
                         @foreach ($products as $product)
                             <li class="flex flex-col justify-between p-5 box-border rounded hover:shadow-md">
-                                <div class="flex items-center h-full">
+                                <div class="flex items-center max-w-md h-36 sm:h-52">
                                     <a href="{{ route('product.show',['product'=> $product->id]) }}">
-                                        <img class="h-full w-full" src="{{ asset($product->product_imgsrc1) }}" alt="">
+                                        <img class="" src="{{ asset($product->product_imgsrc1) }}" alt="">
                                     </a>
                                 </div>
                                 <div>
