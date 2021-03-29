@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 
@@ -23,10 +24,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
 Route::get('/pdfmenu', function () {
     return view('pdfmenu');
 })->name('pdfmenu');
@@ -35,6 +32,9 @@ Route::get('/find',[ProductController::class, 'find'])->name('product.find');
 Route::get('/type',[ProductController::class, 'type'])->name('product.type');
 Route::get('/dashboard/list',[DashboardController::class, 'list'])->middleware('auth')->name('dashboard.list');
 Route::get('/dashboard/find',[DashboardController::class, 'find'])->middleware('auth')->name('dashboard.find');
+
+Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact',[ContactController::class, 'contactPost'])->name('contact.post');
 
 Route::post('images/upload', [ImageController::class, 'upload'])->name('ckeditor.upload');
 
