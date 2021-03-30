@@ -50,6 +50,7 @@
                 <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="/">首頁</a>
                 <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('product.index') }}">商品</a>
                 <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('pdfmenu') }}">型錄</a>
+                <a class="p-6 inline-block border-b-2 border-white hover:border-b-2 hover:border-yellow-400" href="{{ route('contact.index') }}">聯繫我們</a>
             </div>
             <div class="flex ml-auto hidden md:block">
                 <form class="border-2 rounded" action="{{ route('product.find') }}" method="get">
@@ -138,8 +139,8 @@
             <div class="flex justify-center py-2 text-sm md:text-base">
                 <a class="block px-4" href="/">首頁</a>|
                 <a class="block px-4" href="{{ route('product.index') }}">商品</a>|
-                <a class="block px-4" href="{{ route('contact.index') }}">聯繫我們</a>|
-                <a class="block px-4" href="">店面位置</a>
+                <a class="block px-4" href="{{ route('pdfmenu') }}">型錄</a>|
+                <a class="block px-4" href="{{ route('contact.index') }}">聯繫我們</a>
                 @auth
                 |<a href="{{ url('/dashboard') }}" class="block px-4">後台管理</a>
                 @endauth
