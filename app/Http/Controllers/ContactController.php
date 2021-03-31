@@ -21,12 +21,14 @@ class ContactController extends Controller
             'customer_address' => 'nullable',
             'customer_email' => 'required',
             'customer_content' => 'required',
+            'captcha' => 'required|captcha'
         ],[
             'customer_name.required' => '請填入姓名',
             'customer_phone.required' => '請填入聯絡電話和分機',
             'customer_email.required' => '請填入聯絡信箱',
             'customer_content.required' => '請填入訊息',
-
+            'captcha.required' => '請輸入驗證碼',
+            'captcha.captcha' => '驗證碼有誤',
         ]);
 
         if( $validator->fails() ){
