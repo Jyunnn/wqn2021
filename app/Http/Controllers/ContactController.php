@@ -45,7 +45,7 @@ class ContactController extends Controller
             function ($message) {
                     $message->from('mmminshop@hotmail.com', '文光行.tw');
                     $message->to('tel5430196@gmail.com', '文光行')
-                    ->subject('有客戶在文光行.tw上留言');
+                    ->subject('有客戶在網站上留言');
         });
 
         return back()->with('success', '感謝您的詢問, 我們會盡快回覆您');

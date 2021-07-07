@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function type(Request $request)
     {
         $keyword = $request->query()["keyword"];
-        $products = Product::where('product_type', $keyword)->paginate(10);
+        $products = Product::where('product_type', $keyword)->paginate(10)->withPath('/type?keyword='.$keyword);
         return view('product.type', ['products' => $products, 'keyword' => $keyword]);
     }
 

@@ -1,4 +1,4 @@
-<div class="pb-8 sm:px-0 max-w-7xl mx-auto">
+<div class="pb-8 sm:px-0 py-8 max-w-7xl mx-auto">
     <div class="mb-5">
         <select class="w-full mb-5" id="pdfmenu" name="pdfmenu" wire:model="Stationery">
             <option value="none">請選擇目錄</option>
