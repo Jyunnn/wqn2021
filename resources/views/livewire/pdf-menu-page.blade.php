@@ -31,8 +31,7 @@
         <p>請在上方選單選擇目錄</p>
         <div class="text-sm mt-5">
             <div class="py-5">
-                <p>因檔案較大，首次載入時間可能較久，請耐心等候</p>
-                <p>如果您的網路有流量限制請勿選取目錄以免流量暴增</p>
+                <p>因檔案較大，首次載入時間可能較久，或是您可以瀏覽我們放在其他空間的<a href="https://contents.wqn.com.tw/" style="color: #f59e0b">目錄網站</a></p>
             </div>
 
             <p class="text-sm">此目錄為新東利製作權所有</p>
