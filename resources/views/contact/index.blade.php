@@ -25,9 +25,16 @@
                     </div>
                 @endif
                 <div class="py-5">
-                    <p>您可以使用這個表單與我們聯繫</p>
+                    <p>可以使用這個表單與我們聯繫</p>
                     <p>您的反應將會寄送到我們的電子信箱，我們收到您的反應會立即回覆您</p>
                 </div>
+
+								<div class="py-5">
+                    <p>您也可以使用LINE加入文光行官方帳號與我們聯繫</p>
+										<a href="https://lin.ee/WHrrRif">
+											<img class="h-12" style="display: inline;" src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友">
+										</a>
+									</div>
                 <div>
                     <form action="{{ route('contact.post') }}" method="post">
                     @csrf
