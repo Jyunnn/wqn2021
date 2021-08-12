@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <img class="w-28 md:w-44 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
+                        <img class="w-28 md:w-36 py-4" src="{{ asset('images/wqn_logo.png') }}" alt="">
                     </a>
                 </div>
 
@@ -20,12 +20,6 @@
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.list')" :active="request()->routeIs('dashboard.list')">
                         {{ __('商品列表') }}
-                    </x-nav-link>
-                    <x-nav-link>
-                        {{ __('未報價(待新增)') }}
-                    </x-nav-link>
-                    <x-nav-link>
-                        {{ __('已報價(待新增)') }}
                     </x-nav-link>
                 </div>
             </div>

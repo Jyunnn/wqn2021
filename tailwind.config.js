@@ -10,11 +10,19 @@ module.exports = {
             },
             width: {
                 '450': '450px',
+                '320': '320px',
                 '100': '100px',
             },
             height:{
                 '450': '450px',
+                '320': '320px',
                 '100': '100px',
+            },
+            maxWidth:{
+                
+            },
+            maxHeight:{
+
             }
         },
     },
@@ -22,6 +30,10 @@ module.exports = {
     variants: {
         extend: {
             opacity: ['disabled'],
+            borderWidth: ['hover'],
+            borderColor: ['hover', 'active'],
+            backgroundColor: ['hover', 'active'],
+
         },
     },
 

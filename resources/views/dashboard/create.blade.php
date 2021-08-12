@@ -1,5 +1,5 @@
 <x-app-layout>
-    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('新增商品') }}
@@ -44,6 +44,7 @@
                             <option value="五金百貨">五金百貨</option>
                             <option value="清潔用品">清潔用品</option>
                             <option value="辦公茶水">辦公茶水</option>
+                            <option value="設計印刷">設計印刷</option>
                         </select>
                         <p class="text-xs text-red-600">(最好要有分類的建檔)</p>
                     </div>
@@ -62,10 +63,12 @@
 
                     <div class="py-2">
                         <label for="product_imgsrc">
-                            上傳圖片1: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
+                            上傳主要圖片: <input type="file" name="product_imgsrc1" id="product_imgsrc" data-target="preview_product_imgsrc">
                         </label>
                         <p class="text-xs text-red-600">(必要,將置於主圖,建議450*450)</p>
-                        <img id="preview_product_imgsrc">
+                        <div class="flex items-center w-56 h-56">
+                            <img id="preview_product_imgsrc" src="{{ asset('images/img_upload.jpg')}}">
+                        </div>
                     </div>
 
                     <script>
@@ -81,25 +84,10 @@
                                 let img = document.querySelector('#'+imgId);
                                 img.setAttribute('src', e.target.result)
                                 img.setAttribute('alt', e.target.result)
-                                img.setAttribute('class', "w-56 h-56")
                             }
                             reader.readAsDataURL(input.files[0])
                         }
                     </script>
-
-                    <div class="py-2">
-                        <label for="product_imgsrc">
-                            上傳圖片2: <input type="file" name="product_imgsrc2" id="product_imgsrc">
-                        </label>
-                        <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
-                    </div>
-
-                    <div class="py-2">
-                        <label for="product_imgsrc">
-                            上傳圖片3: <input type="file" name="product_imgsrc3" id="product_imgsrc">
-                        </label>
-                        <p class="text-xs text-red-600">(非必要,置於主圖旁邊的小圖,建議450*450)</p>
-                    </div>
 
                     <div class="py-2">
                         <label for="product_attr">商品屬性</label>
@@ -119,10 +107,20 @@
                         <p class="text-xs text-red-600">(設定0會顯示無庫存)</p>
                     </div>
 
-                    <div class="my-5">
+
+                    <div class="my-5 text-2xl">
+                        <label for="product_simplecontent">商品簡易說明</label>
+                        <textarea name="product_simplecontent" id="simple_editor">
+                            {{ old('product_simplecontent') }}
+                        </textarea >
+                    </div>
+
+                    <div class="my-5 text-2xl">
                         <label for="product_content">商品內容</label>
                         <p class="text-xs text-red-600">(必須填寫,不然客人不知道這是啥)</p>
-                        <textarea name="product_content" id="editor" value="{{ old('product_content') }}">&lt;p&gt;輸入商品內容&lt;/p&gt;</textarea >
+                        <textarea name="product_content" id="editor">
+                            {{ old('product_content') }}
+                        </textarea >
                     </div>
 
                     <div class="my-5">
@@ -134,13 +132,15 @@
 
     </div>
     <script>
-        ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .then( editor => {
-                        console.log( editor );
-                } )
-                .catch( error => {
-                        console.error( error );
-                } );
+        CKEDITOR.replace('editor', {
+            filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            uiColor: '#9AB8F3'
+        });
+
+        CKEDITOR.replace('simple_editor', {
+            uiColor: '#f2d298',
+            removeButtons:'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,Image',
+        });
     </script>
 </x-app-layout>

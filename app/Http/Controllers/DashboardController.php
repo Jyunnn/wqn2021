@@ -43,16 +43,15 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_dm_number' => 'nullable|integer',
+            'product_dm_number' => 'nullable',
             'product_name' => 'required',
             'product_imgsrc1' => 'required',
             'product_price' => 'required|integer',
             'product_qty' => 'required|integer',
             'product_content' => 'required',
         ],[
-            'product_dm_number.integer' => '目錄編號必須是數字',
             'product_name.required' => '商品名稱為必填項目',
-            'product_imgsrc1.required' => '上傳圖片1必填選擇一張圖',
+            'product_imgsrc1.required' => '"上傳主要圖片"必填選擇一張圖',
             'product_price.required' => '價錢為必填項目,且必須是數字',
             'product_qty.required' => '庫存為必填項目且,必須是數字',
             'product_content.required' => '商品內容為必填項目'
@@ -63,8 +62,6 @@ class DashboardController extends Controller
         }
 
         $file1 = $request->file('product_imgsrc1');
-        $file2 = $request->file('product_imgsrc2');
-        $file3 = $request->file('product_imgsrc3');
 
         if( $file1 ) {
             $path1 = $file1->store('public');
@@ -79,33 +76,12 @@ class DashboardController extends Controller
             'product_attr' => $request ->input('product_attr'),
             'product_price' => $request ->input('product_price'),
             'product_qty' => $request ->input('product_qty'),
+            'product_simplecontent' =>$request ->input('product_simplecontent'),
             'product_content' => $request ->input('product_content'),
             'product_show' => 1,
         ]);
 
-        if($file2 && $file3) {
-            $path2 = $file2->store('public');
-            $path3 = $file3->store('public');
-            $url2 = Storage::url($path2);
-            $url3 = Storage::url($path3);
-            DB::table('products')->insert([
-                'product_imgsrc2' => $url2,
-                'product_imgsrc3' => $url3,
-            ]);
-        }
-
         return redirect()->route('dashboard.list');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -116,10 +92,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        if(is_null($product)){
-            abort(404);
-        };
+        $product = Product::findOrFail($id);
         return view('dashboard.edit', ['product' => $product]);
     }
 
@@ -133,6 +106,19 @@ class DashboardController extends Controller
     public function update(Request $request, $id)
     {
 
+        $validator = Validator::make($request->all(), [
+            'product_dm_number' => 'nullable',
+            'product_name' => 'required',
+            'product_price' => 'required|integer',
+            'product_qty' => 'required|integer',
+            'product_content' => 'required',
+        ],[
+            'product_name.required' => '商品名稱為必填項目',
+            'product_price.required' => '價錢為必填項目,且必須是數字',
+            'product_qty.required' => '庫存為必填項目且,必須是數字',
+            'product_content.required' => '商品內容為必填項目'
+        ]);
+
         $file1 = $request->file('product_imgsrc1');
         if($file1) {
             $path1 = $file1->store('public');
@@ -142,17 +128,20 @@ class DashboardController extends Controller
             ]);
         }
 
+        if( $validator->fails() ){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
         DB::table('products')->where('id', $id)
         ->update(
             [
                 'product_type' => $request -> input('product_type'),
                 'product_dm_number' => $request-> input('product_dm_number'),
                 'product_name' => $request-> input('product_name'),
-                // 'product_imgsrc2' => $request->product_imgsrc2,
-                // 'product_imgsrc3' => $request->product_imgsrc3,
                 'product_attr' => $request ->input('product_attr'),
                 'product_price' => $request -> input('product_price'),
                 'product_qty' => $request-> input('product_qty'),
+                'product_simplecontent' =>$request ->input('product_simplecontent'),
                 'product_content' => $request-> input('product_content'),
             ],
         );
@@ -173,6 +162,12 @@ class DashboardController extends Controller
         if(is_null($product)){
             return redirect()->route('dashboard.index');
         };
+        $diskName = "public";
+        $disk = Storage::disk($diskName);
+        if( $disk->exists($product->product_imgsrc1)){
+            $disk->delete($product->product_imgsrc1);
+        };
+
         $product->delete();
         return redirect()->route('dashboard.list');
     }

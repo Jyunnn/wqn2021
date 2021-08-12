@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(10);
         return view('product.index', ['products'=> $products]);
     }
 
@@ -30,14 +30,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view('product.show', ['product' => $product]);
     }
 
     public function type(Request $request)
     {
         $keyword = $request->query()["keyword"];
-        $products = Product::where('product_type', $keyword)->paginate(10);
+        $products = Product::where('product_type', $keyword)->paginate(10)->withPath('/type?keyword='.$keyword);
         return view('product.type', ['products' => $products, 'keyword' => $keyword]);
     }
 
@@ -45,7 +45,7 @@ class ProductController extends Controller
     {
         $type = $request->query()["type"];
         $keyword = $request->query()["keyword"];
-        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(5);
+        $products = Product::where( $type, 'LIKE' ,'%'.$keyword.'%' )->paginate(10)->withQueryString();
         return view('product.find', ['products' => $products , 'type' => $type , 'keyword' => $keyword]);
     }
 }
