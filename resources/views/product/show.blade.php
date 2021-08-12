@@ -60,9 +60,9 @@
                         @endif -->
 
                         <div id="cookies_use_data" data-id="{{ $product -> id }}" class="col-span-6 md:p-5">
-                            <label for="product_cart_input">數量</label>
-                            <input id="product_cart_input" name="product_cart_input" type="number" min="1" value="1" />
-														<button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
+                            <!-- <label for="product_cart_input">數量</label>
+                            <input id="product_cart_input" name="product_cart_input" type="number" min="1" value="1" /> -->
+                            <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                         </div>
                     </div>
                 </div>
@@ -82,24 +82,25 @@
     <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
     <script src="{{ asset('js/cookies.js') }}"></script>
     <script>
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
+        // function currentDiv(n) {
+        //     showDivs(slideIndex = n);
+        // }
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " w3-opacity-off";
+        // function showDivs(n) {
+        //     var i;
+        //     var x = document.getElementsByClassName("mySlides");
+        //     var dots = document.getElementsByClassName("demo");
+        //     if (n > x.length) {slideIndex = 1}
+        //     if (n < 1) {slideIndex = x.length}
+        //     for (i = 0; i < x.length; i++) {
+        //         x[i].style.display = "none";
+        //     }
+        //     for (i = 0; i < dots.length; i++) {
+        //         dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+        //     }
+        //     x[slideIndex-1].style.display = "block";
+        //     dots[slideIndex-1].className += " w3-opacity-off";
+        // }
 
         let cart_submit = document.getElementById('product_cart_submit');
         let product_id = "{{ $product -> id }}";
@@ -132,6 +133,5 @@
                 }
             })
         }
-			}
     </script>
 </x-layout>
