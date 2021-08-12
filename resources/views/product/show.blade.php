@@ -51,23 +51,19 @@
                                 {!! htmlspecialchars_decode($product -> product_simplecontent) !!}
                             @endif
                         </div>
-<<<<<<< HEAD
-                        <br>
                         <!-- <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div> -->
 
-                        @if( $product -> product_price == 0 )
+                        <!-- @if( $product -> product_price == 0 )
                             <h3 class="text-xl py-3">定價: 來電詢價 </h3>
                         @else
                             <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
-                        @endif
-                        <div id="cookies_use_data" data-id="{{ $product -> id }}">
+                        @endif -->
+
+                        <div id="cookies_use_data" data-id="{{ $product -> id }}" class="col-span-6 md:p-5">
                             <label for="product_cart_input">數量</label>
                             <input id="product_cart_input" name="product_cart_input" type="number" min="1" value="1" />
+														<button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                         </div>
-                        <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
-=======
-                    
->>>>>>> main
                     </div>
                 </div>
             </div>
@@ -82,7 +78,6 @@
         </div>   
         
     </div>
-<<<<<<< HEAD
     
     <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
     <script src="{{ asset('js/cookies.js') }}"></script>
@@ -105,9 +100,7 @@
             }
             x[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " w3-opacity-off";
-=======
 
-    <script>
         let cart_submit = document.getElementById('product_cart_submit');
         let product_id = "{{ $product -> id }}";
 
@@ -138,7 +131,7 @@
                     addProductToCart(product_id ,cart_input.value)
                 }
             })
->>>>>>> main
         }
+			}
     </script>
 </x-layout>
