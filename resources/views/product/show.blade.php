@@ -40,9 +40,9 @@
                                     <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
                                     <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div>
                                 @endif
-                                <!-- <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button> -->
                             </div>
                         </div>
+
                         <div class="col-span-6 md:ml-8 md:p-5">
                             <p class="text-xl mb-6 font-bold">簡易說明</p>
                             @if(!$product -> product_simplecontent )
@@ -51,19 +51,11 @@
                                 {!! htmlspecialchars_decode($product -> product_simplecontent) !!}
                             @endif
                         </div>
-                        <!-- <div id="ProductPriceCount" data-price="{{ $product -> product_price }}"></div> -->
-
-                        <!-- @if( $product -> product_price == 0 )
-                            <h3 class="text-xl py-3">定價: 來電詢價 </h3>
-                        @else
-                            <h3 class="text-xl py-3">定價: <span class="text-red-500 text-2xl"> {{ $product -> product_price}} </span> 元</h3>
-                        @endif -->
 
                         <div id="cookies_use_data" data-id="{{ $product -> id }}" class="col-span-6 md:p-5">
-                            <!-- <label for="product_cart_input">數量</label>
-                            <input id="product_cart_input" name="product_cart_input" type="number" min="1" value="1" /> -->
                             <button class="text-xl py-3" id="product_cart_submit" type="submit">加入詢價</button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -82,28 +74,9 @@
     <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
     <script src="{{ asset('js/cookies.js') }}"></script>
     <script>
-        // function currentDiv(n) {
-        //     showDivs(slideIndex = n);
-        // }
-
-        // function showDivs(n) {
-        //     var i;
-        //     var x = document.getElementsByClassName("mySlides");
-        //     var dots = document.getElementsByClassName("demo");
-        //     if (n > x.length) {slideIndex = 1}
-        //     if (n < 1) {slideIndex = x.length}
-        //     for (i = 0; i < x.length; i++) {
-        //         x[i].style.display = "none";
-        //     }
-        //     for (i = 0; i < dots.length; i++) {
-        //         dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-        //     }
-        //     x[slideIndex-1].style.display = "block";
-        //     dots[slideIndex-1].className += " w3-opacity-off";
-        // }
-
         let cart_submit = document.getElementById('product_cart_submit');
         let product_id = "{{ $product -> id }}";
+        let product_attr = "{{ $product -> product_attr }}";
 
         function getCart() {
             let cart = Cookies.get('cart');
@@ -114,24 +87,39 @@
             Cookies.set('cart', JSON.stringify(cart))
         }
 
-        function addProductToCart(productId, qty) {
+        function addProductToCart(productId, qty, attr) {
             let cart = getCart();
             let quantity = parseInt(cart[productId]) || 0;
+						let attribute = attr || null;
             let addQuantity = parseInt(qty) || 0;
             let newQuantity = quantity + addQuantity;
-            cart[productId] = newQuantity;
+
+						if ( cart[productId] ) {
+							console.log(cart[productId][0]);
+						} else {
+							cart[productId] = [
+								{
+								 attr: attribute,
+								 qty: newQuantity, 
+								}
+							];
+						}
+						
             saveCart(cart);
 
-            alert(`已加入詢價,目前該商品數量 ${cart[productId]}`)
+            alert(`已加入詢價,目前該商品數量 ${cart[productId].qty}`)
         }
 
         if(cart_submit) {
             cart_submit.addEventListener('click', function(){
                 let cart_input = document.getElementById('product_cart_input');
-                if(cart_input) {
+								// let attr =  document.querySelector('input[name="attr"]:checked').value;
+                if( cart_input) {
                     addProductToCart(product_id ,cart_input.value)
                 }
             })
         }
+
+				console.log("{{ $product -> product_attr }}");
     </script>
 </x-layout>

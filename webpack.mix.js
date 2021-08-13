@@ -22,4 +22,4 @@ mix.js('resources/js/swiper.js', 'public/js/swiper.js');
 mix.js('resources/js/cookies.js', 'public/js/cookies.js');
 
 
-// mix.js('resources/js/ProductPriceCount/all.js', 'public/js/ProductPriceCount').react();
+mix.js('resources/js/ProductPriceCount/all.js', 'public/js/ProductPriceCount').react();

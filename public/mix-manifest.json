@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/js/swiper.js": "/js/swiper.js",
     "/js/cookies.js": "/js/cookies.js",
+    "/js/ProductPriceCount/all.js": "/js/ProductPriceCount/all.js",
     "/css/app.css": "/css/app.css"
 }
