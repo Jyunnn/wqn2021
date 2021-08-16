@@ -22,7 +22,7 @@
         <tbody class="">
             <tr class="border-b">
                 <td> 1 </td>
-                <td> GoPro HERO9 Black 輕旅自拍組 特別版 </td>
+                <td> {{ $product }} </td>
                 <td> 
                     <input type="number" min="1" value="1"> 
                 </td>

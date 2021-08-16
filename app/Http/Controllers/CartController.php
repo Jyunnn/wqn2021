@@ -12,17 +12,11 @@ class CartController extends Controller
         $cart = $request->cookie('cart');
         $product = Product::all();
 
-        if(!is_null($cart)) {
-            $cart = json_decode($cart, true);
-            foreach($cart as $productId => $qty){
-                $cart[$productId] = $qty + 1;
-            }
-            $cart = json_encode($cart);
-        }
-        dump($cart, $product);
+        dump(json_decode($cart, true));
 
-        return response()->view('cart')->cookie(
-            'cart', $cart
-        );
+        // return response()->view('cart')->cookie(
+        //     'cart', $cart
+        // );
+				return view('cart', ['product' => $product]);
     }
 }

@@ -26,10 +26,11 @@
                             <div>
                                 @if($product -> product_attr)
                                     <h3 class="text-xl"> 商品屬性：</h3>
-                                    @foreach( explode(",", $product -> product_attr) as $attr)
-                                        <input type="radio" value="{{ $attr }}" name="attr">
-                                        <label>{{ $attr }}</label>
-                                    @endforeach
+																		<select name="attribute" id="product_attr">
+																			@foreach( explode(",", $product -> product_attr) as $attr)
+																					<option value="{{ $attr }}"> {{ $attr }} </option>
+																			@endforeach
+																		</select>
                                 @endif
                                 </div>
                                 <br>
@@ -73,53 +74,4 @@
     
     <script src="{{ asset('js/ProductPriceCount/all.js') }}"></script>
     <script src="{{ asset('js/cookies.js') }}"></script>
-    <script>
-        let cart_submit = document.getElementById('product_cart_submit');
-        let product_id = "{{ $product -> id }}";
-        let product_attr = "{{ $product -> product_attr }}";
-
-        function getCart() {
-            let cart = Cookies.get('cart');
-            return (!cart) ? {} : JSON.parse(cart);
-        }
-
-        function saveCart(cart) {
-            Cookies.set('cart', JSON.stringify(cart))
-        }
-
-        function addProductToCart(productId, qty, attr) {
-            let cart = getCart();
-            let quantity = parseInt(cart[productId]) || 0;
-						let attribute = attr || null;
-            let addQuantity = parseInt(qty) || 0;
-            let newQuantity = quantity + addQuantity;
-
-						if ( cart[productId] ) {
-							console.log(cart[productId][0]);
-						} else {
-							cart[productId] = [
-								{
-								 attr: attribute,
-								 qty: newQuantity, 
-								}
-							];
-						}
-						
-            saveCart(cart);
-
-            alert(`已加入詢價,目前該商品數量 ${cart[productId].qty}`)
-        }
-
-        if(cart_submit) {
-            cart_submit.addEventListener('click', function(){
-                let cart_input = document.getElementById('product_cart_input');
-								// let attr =  document.querySelector('input[name="attr"]:checked').value;
-                if( cart_input) {
-                    addProductToCart(product_id ,cart_input.value)
-                }
-            })
-        }
-
-				console.log("{{ $product -> product_attr }}");
-    </script>
 </x-layout>
