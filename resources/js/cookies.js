@@ -3,18 +3,18 @@ const Product_Id = getData.dataset.id;
 let cart_submit = document.getElementById('product_cart_submit');
 
 function getCart() {
-    let cart = Cookies.get('cart');
+    let cart = Cookies.get('wqn_cart');
     return (!cart) ? [] : JSON.parse(cart);
 }
 
 function saveCart(cart) {
-    Cookies.set('cart', JSON.stringify(cart))
+    Cookies.set('wqn_cart', JSON.stringify(cart))
 }
 
-function addProductToCart(productId, qty, attr) {
+function addProductToCart(productId, quantity, attribute) {
 		let cart = getCart(); 
 
-		if (!attr) { // 如果沒有傳屬性
+		if (!attribute) { // 如果沒有傳屬性
 
 			let value = cart.find((v) => {
 				return v.id == productId
@@ -24,18 +24,18 @@ function addProductToCart(productId, qty, attr) {
 
 			if ( value ) { // 如果有找到重複id
 				console.log('有重複id', value);
-				let newQuantity = Number(value.value[0].quantity) + Number(qty);
-				cart[id].value[0].quantity = newQuantity;
+				let newQuantity = Number(value.value[0].qty) + Number(quantity);
+				cart[id].value[0].qty = newQuantity;
 				saveCart(cart)
-				alert(`已更新購物車, 目前該商品數量 ${cart[id].value[0].quantity}`)
+				alert(`已更新購物車, 目前該商品數量 ${cart[id].value[0].qty}`)
 
 			} else { // 如果沒有重複id
 				cart.push(
 					{
 						id: productId,
 						value: [{
-							attribute: null,
-							quantity: qty
+							attr: null,
+							qty: quantity
 						}]
 					},
 				)
@@ -50,25 +50,25 @@ function addProductToCart(productId, qty, attr) {
 
 			if ( item ) { // 如果有找到重複id
 
-				let attribute = item.value.find((v) => {
-					return v.attribute == attr
+				let _attribute = item.value.find((v) => {
+					return v.attr == attribute
 				})
 
 				let item_id = cart.indexOf(item);
-				let attr_id = item.value.indexOf(attribute);
+				let attr_id = item.value.indexOf(_attribute);
 
-				if ( attribute ) {
+				if ( _attribute ) {
 					console.log('有相同屬性');
 					let item_value = cart[item_id].value[attr_id];
-					let newQuantity = Number(item_value.quantity) + Number(qty);
-					item_value.quantity = newQuantity
+					let newQuantity = Number(item_value.qty) + Number(quantity);
+					item_value.qty = newQuantity
 					saveCart(cart)
-					alert(`已更新購物車, 目前該商品數量 ${item_value.quantity}`)
+					alert(`已更新購物車, 目前該商品數量 ${item_value.qty}`)
 				}	else {
 					console.log('沒有相同屬性');
 					cart[item_id].value.push({
-						attribute: attr,
-						quantity: qty
+						qttr: attribute,
+						qty: quantity
 					})
 					saveCart(cart)
 					alert(`已加入購物車`)
@@ -79,8 +79,8 @@ function addProductToCart(productId, qty, attr) {
 					{
 						id: productId,
 						value: [{
-							attribute: attr,
-							quantity: qty
+							attr: attribute,
+							qty: quantity
 						}]
 					},
 				)

@@ -9,14 +9,10 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        $cart = $request->cookie('cart');
+        $carts = json_decode($request->cookie('wqn_cart'));
         $product = Product::all();
 
-        dump(json_decode($cart, true));
 
-        // return response()->view('cart')->cookie(
-        //     'cart', $cart
-        // );
-				return view('cart', ['product' => $product]);
+				return view('cart', ['carts' => $carts]);
     }
 }

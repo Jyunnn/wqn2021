@@ -9,9 +9,6 @@
                 <div class="swiper-slide">
                     <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
                 </div>
-                <div class="swiper-slide">
-                    <img src="{{asset('images/welcome_bar01.jpg')}}" alt="">
-                </div>
             </div>
             <!-- Add Arrows  -->
             <div class="swiper-pagination"></div>
